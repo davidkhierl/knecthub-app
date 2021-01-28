@@ -1,0 +1,2 @@
+# Ignore lottie animation json
+src/assets/animations/*.json
