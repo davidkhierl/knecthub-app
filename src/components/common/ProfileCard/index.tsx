@@ -9,6 +9,7 @@ import {
   useStyleConfig
 } from '@chakra-ui/react';
 
+import ButtonLinkRouter from '../ButtonLinkRouter';
 import React from 'react';
 import useUserStore from 'store/useUserStore';
 
@@ -33,6 +34,9 @@ const ProfileCard = forwardRef<BoxProps, 'div'>(({ children, ...props }, ref) =>
           AMS Sustainment
         </Text>
       </VStack>
+      <ButtonLinkRouter to='/settings/profile' mt={4} size='sm' isFullWidth>
+        Update Profile
+      </ButtonLinkRouter>
     </Box>
   );
 });
