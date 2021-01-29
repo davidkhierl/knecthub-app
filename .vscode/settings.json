@@ -5,6 +5,7 @@
     "Container",
     "ProfileCard",
     "useUserStore",
-    "MainLayout"
+    "MainLayout",
+    "AccountPage"
   ]
 }
