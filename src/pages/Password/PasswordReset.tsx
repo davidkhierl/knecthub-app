@@ -1,7 +1,6 @@
 import { AlertIcon, Box, Center, Flex, Heading } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 
-import ButtonLinkRouter from 'components/common/ButtonLinkRouter';
 import DefaultLayout from 'layouts/DefaultLayout';
 import KnecthubSpinner from 'components/common/Loaders/KnecthubSpinner';
 import MotionAlert from 'components/common/Motions/MotionAlert';
@@ -63,13 +62,7 @@ const PasswordReset = () => {
                   </MotionAlert>
                 )
               ) : (
-                <>
-                  <PasswordResetRequestForm />
-                  {/* TODO: REMOVE CANCEL BUTTON WHEN REQUEST SUCCESS */}
-                  <ButtonLinkRouter to='/login' mt={4} isFullWidth>
-                    Cancel
-                  </ButtonLinkRouter>
-                </>
+                <PasswordResetRequestForm />
               )}
             </Box>
           )}
