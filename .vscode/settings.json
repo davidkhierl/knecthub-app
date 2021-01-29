@@ -3,6 +3,7 @@
   "conventionalCommits.scopes": [
     "package",
     "Container",
-    "ProfileCard"
+    "ProfileCard",
+    "useUserStore"
   ]
 }
