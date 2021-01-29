@@ -50,7 +50,7 @@ const MainLayout: React.FC = ({ children }) => {
         px={4}
         boxShadow='md'>
         <KnecthubLogo to='/' />
-        <HStack as='nav' spacing='8px' ml='auto'>
+        <HStack as='nav' spacing='8px' ml='auto' display={{ base: 'none', sm: 'flex' }}>
           <NavLinkRouter to='/' tooltipLabel='Home'>
             Home
           </NavLinkRouter>
