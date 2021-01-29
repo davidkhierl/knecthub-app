@@ -9,7 +9,7 @@ import { ResponseError } from 'services/api';
  */
 export function mapServerErrors(
   error: AxiosError<ResponseError[]>,
-  setError: (name: string, error: ErrorOption) => void
+  setError: (name: any, error: ErrorOption) => void
 ) {
   error.response?.data.forEach((error) => {
     if (error.param) setError(error.param, { type: 'server', message: error.message });
