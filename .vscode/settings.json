@@ -4,6 +4,7 @@
     "package",
     "Container",
     "ProfileCard",
-    "useUserStore"
+    "useUserStore",
+    "MainLayout"
   ]
 }
