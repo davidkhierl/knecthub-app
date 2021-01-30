@@ -7,7 +7,7 @@ import React from 'react';
 import { mapServerErrors } from 'utils/reactHookFormUtils';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { useUserMutation } from 'services/user.services';
+import { usePostUserMutation } from 'services/user.services';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const RegisterFormSchema = yup.object().shape({
@@ -32,7 +32,7 @@ const RegisterForm = () => {
     resolver: yupResolver(RegisterFormSchema)
   });
 
-  const { mutate, isLoading } = useUserMutation();
+  const { mutate, isLoading } = usePostUserMutation();
 
   const dispatch = useDispatch();
 
