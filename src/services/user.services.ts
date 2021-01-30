@@ -28,6 +28,26 @@ export const getCurrentUser = () => api.get('/users/me');
 /**
  * User post query mutation.
  */
-export function useUserMutation() {
+export function usePostUserMutation() {
   return useMutation<AxiosResponse<User>, AxiosError<ResponseError[]>, UserPostRequest>(postUser);
+}
+
+export interface UserPatchRequest {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
+}
+
+export type UserPatchResponse = User;
+
+export const patchUser = (request: UserPatchRequest) =>
+  api.patch<UserPatchResponse>('/users/me', request);
+
+/**
+ * User patch query mutation.
+ */
+export function usePatchUserMutation() {
+  return useMutation<AxiosResponse<User>, AxiosError<ResponseError[]>, UserPatchRequest>(patchUser);
 }
