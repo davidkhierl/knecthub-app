@@ -7,6 +7,7 @@
     "useUserStore",
     "MainLayout",
     "AccountPage",
-    "RegisterForm"
+    "RegisterForm",
+    "UpdateUserForm"
   ]
 }
