@@ -6,6 +6,7 @@
     "ProfileCard",
     "useUserStore",
     "MainLayout",
-    "AccountPage"
+    "AccountPage",
+    "RegisterForm"
   ]
 }
