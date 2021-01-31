@@ -8,6 +8,7 @@
     "MainLayout",
     "AccountPage",
     "RegisterForm",
-    "UpdateUserForm"
+    "UpdateUserForm",
+    "EmailVerify"
   ]
 }

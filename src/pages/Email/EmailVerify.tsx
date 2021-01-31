@@ -10,9 +10,8 @@ import api from 'services/api';
 import queryString from 'query-string';
 
 const EmailVerify = () => {
-  const { token, email } = queryString.parse(window.location.search) as {
+  const { token } = queryString.parse(window.location.search) as {
     token: string;
-    email: string;
   };
 
   const [isLoading, setIsLoading] = useState(token !== undefined);
@@ -25,7 +24,7 @@ const EmailVerify = () => {
     (async () => {
       if (token)
         await api
-          .get(`email/verify?token=${token}&email=${encodeURI(email)}`)
+          .get(`email/verify?token=${token}`)
           .then(() => {
             setIsLoading(false);
             setIsSuccess(true);
@@ -35,7 +34,7 @@ const EmailVerify = () => {
             setError({ message: error.response ? error.response.data.message : error.message });
           });
     })();
-  }, [email, token]);
+  }, [token]);
 
   return (
     <DefaultLayout
