@@ -48,7 +48,7 @@ const PasswordResetForm: React.VFC<PasswordResetFormProps> = ({ token }) => {
     dispatch(startAuth());
     mutate(data, {
       onSuccess: (res) => {
-        dispatch(authSuccess(res.data));
+        dispatch(authSuccess(res.data.data));
       },
       onError: (error) => {
         mapServerErrors(error, setError);

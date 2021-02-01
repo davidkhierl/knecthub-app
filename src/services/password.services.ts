@@ -1,6 +1,6 @@
 import { AxiosError, AxiosResponse } from 'axios';
-import api, { ResponseError } from './api';
 
+import api from './api';
 import { useMutation } from 'react-query';
 
 export interface PasswordResetPostRequest {
@@ -8,12 +8,12 @@ export interface PasswordResetPostRequest {
 }
 
 export const postPasswordReset = (request: PasswordResetPostRequest) =>
-  api.post<{ message: string }>('/password/reset', request);
+  api.post<StandardResponse>('/password/reset', request);
 
 export function usePasswordResetRequestMutation() {
   return useMutation<
-    AxiosResponse<{ message: string }>,
-    AxiosError<string>,
+    AxiosResponse<StandardResponse>,
+    AxiosError<StandardErrorResponse>,
     PasswordResetPostRequest
   >(postPasswordReset);
 }
@@ -24,10 +24,12 @@ export interface PasswordResetPatchRequest {
 }
 
 export const patchPasswordReset = (request: PasswordResetPatchRequest, token: string) =>
-  api.patch<User>(`/password/reset?token=${token}`, request);
+  api.patch<StandardResponse<User>>(`/password/reset?token=${token}`, request);
 
 export function usePasswordResetMutation(token: string) {
-  return useMutation<AxiosResponse<User>, AxiosError<ResponseError[]>, PasswordResetPatchRequest>(
-    (request) => patchPasswordReset(request, token)
-  );
+  return useMutation<
+    AxiosResponse<StandardResponse<User>>,
+    AxiosError<StandardErrorResponse>,
+    PasswordResetPatchRequest
+  >((request) => patchPasswordReset(request, token));
 }

@@ -47,12 +47,12 @@ const LoginForm = () => {
 
     mutate(data, {
       onSuccess: (res) => {
-        dispatch(authSuccess(res.data));
+        dispatch(authSuccess(res.data.data));
       },
       onError: (error) => {
         setError(true);
 
-        setErrorMessage(error.response ? error.response.data[0].message : error.message);
+        setErrorMessage(error.response ? error.response.data.message : error.message);
 
         dispatch(authFailed());
       }

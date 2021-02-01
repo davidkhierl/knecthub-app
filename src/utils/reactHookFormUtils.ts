@@ -1,6 +1,5 @@
 import { AxiosError } from 'axios';
 import { ErrorOption } from 'react-hook-form';
-import { ResponseError } from 'services/api';
 
 /**
  * Map response error to react hook form.
@@ -8,10 +7,10 @@ import { ResponseError } from 'services/api';
  * @param setError react-hook-form setError method.
  */
 export function mapServerErrors(
-  error: AxiosError<ResponseError[]>,
+  error: AxiosError<StandardErrorResponse>,
   setError: (name: any, error: ErrorOption) => void
 ) {
-  error.response?.data.forEach((error) => {
+  error.response?.data.errors.forEach((error) => {
     if (error.param) setError(error.param, { type: 'server', message: error.message });
   });
 }

@@ -39,7 +39,7 @@ export const reloadAuth = (): AppThunk => async (dispatch) => {
   try {
     dispatch(startAuth());
     const res = await getCurrentUser();
-    dispatch(authSuccess(res.data));
+    dispatch(authSuccess(res.data.data));
   } catch (error) {
     dispatch(authFailed());
   }
