@@ -8,8 +8,11 @@ import { ReactComponent as MyPasswordArtwork } from 'assets/images/artworks/home
 import SuccessAnimation from 'assets/animations/success-animation.json';
 import api from 'services/api';
 import queryString from 'query-string';
+import useUserStore from 'store/useUserStore';
 
 const EmailVerify = () => {
+  const setUser = useUserStore((state) => state.setUser);
+
   const { token } = queryString.parse(window.location.search) as {
     token: string;
   };
@@ -24,17 +27,20 @@ const EmailVerify = () => {
     (async () => {
       if (token)
         await api
-          .get(`email/verify?token=${token}`)
-          .then(() => {
+          .get<StandardResponse<User>>(`email/verify?token=${token}`)
+          .then((res) => {
             setIsLoading(false);
+
             setIsSuccess(true);
+
+            setUser(res.data.data);
           })
           .catch((error) => {
             setIsLoading(false);
             setError({ message: error.response ? error.response.data.message : error.message });
           });
     })();
-  }, [token]);
+  }, [setUser, token]);
 
   return (
     <DefaultLayout
