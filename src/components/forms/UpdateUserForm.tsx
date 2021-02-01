@@ -51,6 +51,7 @@ const UpdateUserForm = forwardRef<BoxProps, 'form'>((props, ref) => {
     mutate(data, {
       onSuccess: (res) => {
         setUser(res.data.data);
+
         toast({
           title: 'Update success.',
           description: 'Account details updated.',

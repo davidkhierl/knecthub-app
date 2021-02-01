@@ -33,7 +33,7 @@ const EmailVerify = () => {
 
             setIsSuccess(true);
 
-            setUser(res.data.data);
+            setUser(res.data.data, true);
           })
           .catch((error) => {
             setIsLoading(false);

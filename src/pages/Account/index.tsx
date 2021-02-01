@@ -1,16 +1,38 @@
-import { Box, Divider, Flex, Heading, Stack, useMediaQuery } from '@chakra-ui/react';
+import {
+  Alert,
+  AlertIcon,
+  Box,
+  Divider,
+  Flex,
+  Heading,
+  Stack,
+  useMediaQuery
+} from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { faAddressCard, faUser } from '@fortawesome/free-solid-svg-icons';
+import { find, isMatch } from 'lodash';
 
 import Container from 'components/common/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import NavLinkRouter from 'components/common/NavLinkRouter';
-import React from 'react';
+import UpdatePrimaryEmailForm from 'components/forms/UpdatePrimaryEmailForm';
 import UpdateUserForm from 'components/forms/UpdateUserForm';
+import useUserStore from 'store/useUserStore';
 
 const Account = () => {
   // Divider doesn't support responsive theme
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
+
+  const emails = useUserStore((state) => state.user?.emails);
+
+  const [pendingPrimaryEmail, setPendingPrimaryEmail] = useState<UserEmails>();
+
+  useEffect(() => {
+    const pendingPrimary = find(emails, (email) => isMatch(email, { type: 'pendingPrimary' }));
+
+    if (pendingPrimary) setPendingPrimaryEmail(pendingPrimary);
+  }, [emails]);
 
   return (
     <Container my={8} h='100%'>
@@ -49,9 +71,16 @@ const Account = () => {
                   </Heading>
                   <UpdateUserForm />
                   <Divider orientation='horizontal' my={6} />
-                  <Heading as='h4' size='md'>
+                  <Heading as='h4' size='md' mb={4}>
                     Email
                   </Heading>
+                  <UpdatePrimaryEmailForm mb={2} />
+                  {pendingPrimaryEmail && (
+                    <Alert status='warning'>
+                      <AlertIcon />A request to update primary email to {pendingPrimaryEmail.email}{' '}
+                      is pending, confirm the email address to complete the changes.
+                    </Alert>
+                  )}
                 </Container>
               </Route>
               <Route path='/settings/profile'>Profile</Route>

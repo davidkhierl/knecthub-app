@@ -3,14 +3,14 @@ import { persist } from 'zustand/middleware';
 
 type UserStore = {
   user: User | null;
-  setUser: (user: User) => void;
+  setUser: (user: User, replace?: boolean) => void;
 };
 
 const useUserStore = create<UserStore>(
   persist(
-    (set, _get) => ({
+    (set) => ({
       user: null,
-      setUser: (user) => set(() => ({ user }))
+      setUser: (user, replace) => set(() => ({ user }), replace)
     }),
     {
       name: 'user',
