@@ -20,24 +20,26 @@ import { usePatchUserMutation } from 'services/user.services';
 import useUserStore from 'store/useUserStore';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-const UpdateUserFormSchema = yup.object().shape({
-  firstName: yup.string().required('First name is required.'),
-  lastName: yup.string().required('Last name is required.')
-});
-
-export interface UpdateUserFormInputs {
+type FormData = {
   firstName: string;
   lastName: string;
-}
+};
+
+const UpdateUserFormSchema = yup.object().shape({
+  firstName: yup.string().required('First name is required.'),
+  lastName: yup.string().optional()
+});
 
 const UpdateUserForm = forwardRef<BoxProps, 'form'>((props, ref) => {
+  const setUser = useUserStore((state) => state.setUser);
+
   const user = useUserStore((state) => state.user);
 
-  const setUser = useUserStore((state) => state.setUser);
+  const { mutate, isLoading } = usePatchUserMutation();
 
   const toast = useToast();
 
-  const { register, handleSubmit, errors, setError } = useForm<UpdateUserFormInputs>({
+  const { register, handleSubmit, errors, setError } = useForm<FormData>({
     resolver: yupResolver(UpdateUserFormSchema),
     defaultValues: {
       firstName: user?.firstName,
@@ -45,9 +47,7 @@ const UpdateUserForm = forwardRef<BoxProps, 'form'>((props, ref) => {
     }
   });
 
-  const { mutate, isLoading } = usePatchUserMutation();
-
-  const onSubmit = (data: UpdateUserFormInputs) => {
+  const onSubmit = handleSubmit((data) => {
     mutate(data, {
       onSuccess: (res) => {
         setUser(res.data.data);
@@ -65,10 +65,10 @@ const UpdateUserForm = forwardRef<BoxProps, 'form'>((props, ref) => {
         mapServerErrors(error, setError);
       }
     });
-  };
+  });
 
   return (
-    <Box as='form' ref={ref} onSubmit={handleSubmit(onSubmit)} {...props}>
+    <Box as='form' ref={ref} onSubmit={onSubmit} {...props}>
       <VStack spacing={2}>
         <FormControl id='firstName' isInvalid={errors.firstName?.message !== undefined}>
           <FormLabel>First Name</FormLabel>
@@ -80,7 +80,7 @@ const UpdateUserForm = forwardRef<BoxProps, 'form'>((props, ref) => {
           <Input name='lastName' placeholder='Last Name' ref={register} />
           <FormErrorMessage>{errors.lastName?.message}</FormErrorMessage>
         </FormControl>
-        <Button type='submit' mt={2} isLoading={isLoading} alignSelf='start'>
+        <Button type='submit' mt={2} isLoading={isLoading} alignSelf='start' size='sm'>
           Update
         </Button>
       </VStack>

@@ -19,11 +19,13 @@ import { useForm } from 'react-hook-form';
 import { usePasswordResetRequestMutation } from 'services/password.services';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+type FormData = {
+  email: string;
+};
+
 const PasswordResetRequestFormSchema = yup.object().shape({
   email: yup.string().email('Invalid email.').required('Email is required.')
 });
-
-export type PasswordResetRequestFormInputs = yup.InferType<typeof PasswordResetRequestFormSchema>;
 
 const PasswordResetRequestForm = () => {
   // This endpoint don't return form errors instead we
@@ -35,13 +37,13 @@ const PasswordResetRequestForm = () => {
 
   const [message, setMessage] = useState<string>();
 
-  const { register, handleSubmit, errors } = useForm<PasswordResetRequestFormInputs>({
+  const { mutate, isLoading } = usePasswordResetRequestMutation();
+
+  const { register, handleSubmit, errors } = useForm<FormData>({
     resolver: yupResolver(PasswordResetRequestFormSchema)
   });
 
-  const { mutate, isLoading } = usePasswordResetRequestMutation();
-
-  const onSubmit = (data: PasswordResetRequestFormInputs) => {
+  const onSubmit = handleSubmit((data) => {
     setError(false);
 
     setSuccess(false);
@@ -60,7 +62,7 @@ const PasswordResetRequestForm = () => {
         setMessage('Oops! Something went wrong.');
       }
     });
-  };
+  });
 
   return (
     <>
@@ -91,7 +93,7 @@ const PasswordResetRequestForm = () => {
         </Grid>
       )}
       {!success && (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={onSubmit}>
           <Grid gap={2}>
             <FormControl id='email' isInvalid={errors.email?.message !== undefined}>
               <FormLabel>Email</FormLabel>

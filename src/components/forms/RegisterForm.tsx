@@ -10,33 +10,40 @@ import { useForm } from 'react-hook-form';
 import { usePostUserMutation } from 'services/user.services';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+type FormData = {
+  company?: string;
+  confirmPassword: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+};
+
 const RegisterFormSchema = yup.object().shape({
-  firstName: yup.string().required('First name is required.'),
-  lastName: yup.string().required('Last name is required.'),
   company: yup.string(),
-  email: yup.string().email('Invalid email.').required('Email is required.'),
-  password: yup.string().required('Password is required.'),
   confirmPassword: yup
     .string()
     .required('Please confirm your password.')
-    .oneOf([yup.ref('password'), null], 'Password must match.')
+    .oneOf([yup.ref('password'), null], 'Password must match.'),
+  email: yup.string().email('Invalid email.').required('Email is required.'),
+  firstName: yup.string().required('First name is required.'),
+  lastName: yup.string().required('Last name is required.'),
+  password: yup.string().required('Password is required.')
 });
-
-export type RegisterFormInputs = yup.InferType<typeof RegisterFormSchema>;
 
 /**
  * User Registration Form.
  */
 const RegisterForm = () => {
-  const { register, handleSubmit, errors, setError } = useForm<RegisterFormInputs>({
-    resolver: yupResolver(RegisterFormSchema)
-  });
+  const dispatch = useDispatch();
 
   const { mutate, isLoading } = usePostUserMutation();
 
-  const dispatch = useDispatch();
+  const { register, handleSubmit, errors, setError } = useForm<FormData>({
+    resolver: yupResolver(RegisterFormSchema)
+  });
 
-  const onSubmit = (data: RegisterFormInputs) => {
+  const onSubmit = handleSubmit((data) => {
     dispatch(startAuth());
     mutate(data, {
       onSuccess: (res) => {
@@ -47,10 +54,10 @@ const RegisterForm = () => {
         dispatch(authFailed());
       }
     });
-  };
+  });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={onSubmit}>
       <Grid gap={2}>
         <FormControl id='firstName' isInvalid={errors.firstName?.message !== undefined}>
           <FormLabel>First Name</FormLabel>
@@ -62,7 +69,6 @@ const RegisterForm = () => {
           <Input name='lastName' placeholder='Last Name' ref={register} />
           <FormErrorMessage>{errors.lastName?.message}</FormErrorMessage>
         </FormControl>
-
         {/* NOTE: TEMPORARILY DISABLE COMPANY FIELD
         <FormControl id='company' isInvalid={errors.company?.message !== undefined}>
           <FormLabel>Company</FormLabel>

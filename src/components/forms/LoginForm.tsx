@@ -20,29 +20,32 @@ import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+type FormData = {
+  email: string;
+  password: string;
+};
+
 const LoginFormSchema = yup.object().shape({
   email: yup.string().email('Invalid email.').required('Email is required.'),
   password: yup.string().required('Password is required.')
 });
 
-export type LoginFormInputs = yup.InferType<typeof LoginFormSchema>;
-
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [error, setError] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState('');
 
-  const { register, handleSubmit, errors } = useForm<LoginFormInputs>({
+  const { mutate, isLoading } = useAuthMutation();
+
+  const { register, handleSubmit, errors } = useForm<FormData>({
     resolver: yupResolver(LoginFormSchema)
   });
 
-  const { mutate, isLoading } = useAuthMutation();
-
-  const dispatch = useDispatch();
-
-  const onSubmit = (data: LoginFormInputs) => {
+  const onSubmit = handleSubmit((data) => {
     dispatch(startAuth());
 
     mutate(data, {
@@ -57,10 +60,10 @@ const LoginForm = () => {
         dispatch(authFailed());
       }
     });
-  };
+  });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={onSubmit}>
       <Grid gap={2}>
         {error && (
           <MotionAlert

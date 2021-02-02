@@ -19,33 +19,37 @@ import { useForm } from 'react-hook-form';
 import { usePasswordResetMutation } from 'services/password.services';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+type FormData = {
+  confirmPassword: string;
+  password: string;
+};
+
 const PasswordResetFormSchema = yup.object().shape({
-  password: yup.string().required('Password is required.'),
   confirmPassword: yup
     .string()
     .required('Please confirm your password.')
-    .oneOf([yup.ref('password'), null], 'Password must match.')
+    .oneOf([yup.ref('password'), null], 'Password must match.'),
+  password: yup.string().required('Password is required.')
 });
-
-export type PasswordResetFormInputs = yup.InferType<typeof PasswordResetFormSchema>;
 
 export interface PasswordResetFormProps {
   token: string;
 }
 
 const PasswordResetForm: React.VFC<PasswordResetFormProps> = ({ token }) => {
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const { register, handleSubmit, errors, setError } = useForm<PasswordResetFormInputs>({
-    resolver: yupResolver(PasswordResetFormSchema)
-  });
-
   const dispatch = useDispatch();
+
+  const [showPassword, setShowPassword] = React.useState(false);
 
   const { mutate, isLoading } = usePasswordResetMutation(token);
 
-  const onSubmit = (data: PasswordResetFormInputs) => {
+  const { register, handleSubmit, errors, setError } = useForm<FormData>({
+    resolver: yupResolver(PasswordResetFormSchema)
+  });
+
+  const onSubmit = handleSubmit((data) => {
     dispatch(startAuth());
+
     mutate(data, {
       onSuccess: (res) => {
         dispatch(authSuccess(res.data.data));
@@ -55,10 +59,10 @@ const PasswordResetForm: React.VFC<PasswordResetFormProps> = ({ token }) => {
         dispatch(authFailed());
       }
     });
-  };
+  });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={onSubmit}>
       <Grid gap={2}>
         <FormControl id='password' isInvalid={errors.password?.message !== undefined}>
           <FormLabel>Password</FormLabel>
