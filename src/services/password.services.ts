@@ -3,33 +3,50 @@ import { AxiosError, AxiosResponse } from 'axios';
 import api from './api';
 import { useMutation } from 'react-query';
 
-export interface PasswordResetPostRequest {
+export interface ResetPasswordPostRequest {
   email: string;
 }
 
-export const postPasswordReset = (request: PasswordResetPostRequest) =>
+export const postResetPassword = (request: ResetPasswordPostRequest) =>
   api.post<StandardResponse>('/password/reset', request);
 
-export function usePasswordResetRequestMutation() {
+export function useResetPasswordRequestMutation() {
   return useMutation<
     AxiosResponse<StandardResponse>,
     AxiosError<StandardErrorResponse>,
-    PasswordResetPostRequest
-  >(postPasswordReset);
+    ResetPasswordPostRequest
+  >(postResetPassword);
 }
 
-export interface PasswordResetPatchRequest {
+export interface ResetPasswordPatchRequest {
   password: string;
   confirmPassword: string;
 }
 
-export const patchPasswordReset = (request: PasswordResetPatchRequest, token: string) =>
+export const patchResetPassword = (request: ResetPasswordPatchRequest, token: string) =>
   api.patch<StandardResponse<User>>(`/password/reset?token=${token}`, request);
 
-export function usePasswordResetMutation(token: string) {
+export function useResetPasswordMutation(token: string) {
   return useMutation<
     AxiosResponse<StandardResponse<User>>,
     AxiosError<StandardErrorResponse>,
-    PasswordResetPatchRequest
-  >((request) => patchPasswordReset(request, token));
+    ResetPasswordPatchRequest
+  >((request) => patchResetPassword(request, token));
+}
+
+export interface ChangePasswordPatchRequest {
+  confirmNewPassword: string;
+  currentPassword: string;
+  newPassword: string;
+}
+
+export const patchChangePassword = (request: ChangePasswordPatchRequest) =>
+  api.patch<StandardResponse>('/password', request);
+
+export function useChangePasswordMutation() {
+  return useMutation<
+    AxiosResponse<StandardResponse>,
+    AxiosError<StandardErrorResponse>,
+    ChangePasswordPatchRequest
+  >((request) => patchChangePassword(request));
 }

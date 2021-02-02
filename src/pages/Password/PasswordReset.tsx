@@ -5,8 +5,8 @@ import DefaultLayout from 'layouts/DefaultLayout';
 import KnecthubSpinner from 'components/common/Loaders/KnecthubSpinner';
 import MotionAlert from 'components/common/Motions/MotionAlert';
 import { ReactComponent as MyPasswordArtwork } from 'assets/images/artworks/home.svg';
-import PasswordResetForm from 'components/forms/PasswordResetForm';
-import PasswordResetRequestForm from 'components/forms/PasswordResetRequestForm';
+import ResetPasswordForm from 'components/forms/ResetPasswordForm';
+import ResetPasswordRequestForm from 'components/forms/ResetPasswordRequestForm';
 import api from 'services/api';
 import queryString from 'query-string';
 
@@ -49,7 +49,7 @@ const PasswordReset = () => {
               </Heading>
               {token ? (
                 isValidToken ? (
-                  <PasswordResetForm token={token} />
+                  <ResetPasswordForm token={token} />
                 ) : (
                   <MotionAlert
                     status='error'
@@ -62,7 +62,7 @@ const PasswordReset = () => {
                   </MotionAlert>
                 )
               ) : (
-                <PasswordResetRequestForm />
+                <ResetPasswordRequestForm />
               )}
             </Box>
           )}

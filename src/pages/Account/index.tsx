@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { faAddressCard, faUser } from '@fortawesome/free-solid-svg-icons';
 import { find, isMatch } from 'lodash';
 
+import ChangePasswordForm from 'components/forms/ChangePasswordForm';
 import Container from 'components/common/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import NavLinkRouter from 'components/common/NavLinkRouter';
@@ -71,7 +72,7 @@ const Account = () => {
                 <Heading as='h4' size='md' mb={4}>
                   Password
                 </Heading>
-                <UpdateUserForm />
+                <ChangePasswordForm />
               </Container>
             </Route>
             <Route path='/settings/profile'>Profile</Route>

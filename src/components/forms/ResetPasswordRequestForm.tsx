@@ -16,18 +16,18 @@ import React, { useState } from 'react';
 import ButtonLinkRouter from 'components/common/ButtonLinkRouter';
 import MotionAlert from 'components/common/Motions/MotionAlert';
 import { useForm } from 'react-hook-form';
-import { usePasswordResetRequestMutation } from 'services/password.services';
+import { useResetPasswordRequestMutation } from 'services/password.services';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 type FormData = {
   email: string;
 };
 
-const PasswordResetRequestFormSchema = yup.object().shape({
+const ResetPasswordRequestFormSchema = yup.object().shape({
   email: yup.string().email('Invalid email.').required('Email is required.')
 });
 
-const PasswordResetRequestForm = () => {
+const ResetPasswordRequestForm = () => {
   // This endpoint don't return form errors instead we
   // manually handle the success and cath 500 error.
 
@@ -37,10 +37,10 @@ const PasswordResetRequestForm = () => {
 
   const [message, setMessage] = useState<string>();
 
-  const { mutate, isLoading } = usePasswordResetRequestMutation();
+  const { mutate, isLoading } = useResetPasswordRequestMutation();
 
   const { register, handleSubmit, errors } = useForm<FormData>({
-    resolver: yupResolver(PasswordResetRequestFormSchema)
+    resolver: yupResolver(ResetPasswordRequestFormSchema)
   });
 
   const onSubmit = handleSubmit((data) => {
@@ -115,4 +115,4 @@ const PasswordResetRequestForm = () => {
   );
 };
 
-export default PasswordResetRequestForm;
+export default ResetPasswordRequestForm;

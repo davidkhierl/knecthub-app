@@ -16,7 +16,7 @@ import React from 'react';
 import { mapServerErrors } from 'utils/reactHookFormUtils';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { usePasswordResetMutation } from 'services/password.services';
+import { useResetPasswordMutation } from 'services/password.services';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 type FormData = {
@@ -24,7 +24,7 @@ type FormData = {
   password: string;
 };
 
-const PasswordResetFormSchema = yup.object().shape({
+const ResetPasswordFormSchema = yup.object().shape({
   confirmPassword: yup
     .string()
     .required('Please confirm your password.')
@@ -32,19 +32,19 @@ const PasswordResetFormSchema = yup.object().shape({
   password: yup.string().required('Password is required.')
 });
 
-export interface PasswordResetFormProps {
+export interface ResetPasswordFormProps {
   token: string;
 }
 
-const PasswordResetForm: React.VFC<PasswordResetFormProps> = ({ token }) => {
+const ResetPasswordForm: React.VFC<ResetPasswordFormProps> = ({ token }) => {
   const dispatch = useDispatch();
 
   const [showPassword, setShowPassword] = React.useState(false);
 
-  const { mutate, isLoading } = usePasswordResetMutation(token);
+  const { mutate, isLoading } = useResetPasswordMutation(token);
 
   const { register, handleSubmit, errors, setError } = useForm<FormData>({
-    resolver: yupResolver(PasswordResetFormSchema)
+    resolver: yupResolver(ResetPasswordFormSchema)
   });
 
   const onSubmit = handleSubmit((data) => {
@@ -99,4 +99,4 @@ const PasswordResetForm: React.VFC<PasswordResetFormProps> = ({ token }) => {
   );
 };
 
-export default PasswordResetForm;
+export default ResetPasswordForm;
