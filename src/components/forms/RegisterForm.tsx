@@ -28,7 +28,10 @@ const RegisterFormSchema = yup.object().shape({
   email: yup.string().email('Invalid email.').required('Email is required.'),
   firstName: yup.string().required('First name is required.'),
   lastName: yup.string().required('Last name is required.'),
-  password: yup.string().required('Password is required.')
+  password: yup
+    .string()
+    .required('Password is required.')
+    .min(6, 'Password must be minimum of 6 characters.')
 });
 
 /**

@@ -33,7 +33,10 @@ const ChangePasswordFormSchema = yup.object().shape({
     .required('Please confirm your password.')
     .oneOf([yup.ref('newPassword'), null], 'New password must match.'),
   currentPassword: yup.string().required('Current password is required.'),
-  newPassword: yup.string().required('New password is required.')
+  newPassword: yup
+    .string()
+    .required('New password is required.')
+    .min(6, 'Password must be minimum of 6 characters.')
 });
 
 const ChangePasswordForm = forwardRef<BoxProps, 'form'>((props, ref) => {
