@@ -9,6 +9,7 @@ import Container from 'components/common/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import NavLinkRouter from 'components/common/NavLinkRouter';
 import UpdatePrimaryEmailForm from 'components/forms/UpdatePrimaryEmailForm';
+import UpdateProfileForm from 'components/forms/UpdateProfileForm';
 import UpdateUserForm from 'components/forms/UpdateUserForm';
 import useUserStore from 'store/useUserStore';
 
@@ -75,7 +76,14 @@ const Account = () => {
                 <ChangePasswordForm />
               </Container>
             </Route>
-            <Route path='/settings/profile'>Profile</Route>
+            <Route path='/settings/profile'>
+              <Container maxWidth={[null, '487px', '487px']} px={0}>
+                <Heading as='h4' size='md' mb={4}>
+                  About You
+                </Heading>
+                <UpdateProfileForm />
+              </Container>
+            </Route>
           </Switch>
         </Box>
       </Stack>
