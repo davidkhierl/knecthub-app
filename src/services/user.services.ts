@@ -60,3 +60,6 @@ export function usePatchUserMutation() {
     UserPatchRequest
   >(patchUser);
 }
+
+export const getUserSearch = (email: string) =>
+  api.get<StandardResponse<User>>(`/users/search?email=${email}`);

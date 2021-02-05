@@ -1,5 +1,6 @@
 import { Grid, GridItem } from '@chakra-ui/react';
 
+import ConnectionsList from 'components/connections/ConnectionsList';
 import Container from 'components/common/Container';
 import ProfileCard from 'components/common/ProfileCard';
 import React from 'react';
@@ -12,7 +13,9 @@ const ProfileMe = () => {
           <ProfileCard />
         </GridItem>
         <GridItem colSpan={3}>webinars to attend</GridItem>
-        <GridItem>connections</GridItem>
+        <GridItem>
+          <ConnectionsList />
+        </GridItem>
       </Grid>
     </Container>
   );
