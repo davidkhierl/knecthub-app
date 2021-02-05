@@ -16,16 +16,18 @@ import React, { useState } from 'react';
 import ButtonLinkRouter from 'components/common/ButtonLinkRouter';
 import MotionAlert from 'components/common/Motions/MotionAlert';
 import { useForm } from 'react-hook-form';
-import { usePasswordResetRequestMutation } from 'services/password.services';
+import { useResetPasswordRequestMutation } from 'services/password.services';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-const PasswordResetRequestFormSchema = yup.object().shape({
+type FormData = {
+  email: string;
+};
+
+const ResetPasswordRequestFormSchema = yup.object().shape({
   email: yup.string().email('Invalid email.').required('Email is required.')
 });
 
-export type PasswordResetRequestFormInputs = yup.InferType<typeof PasswordResetRequestFormSchema>;
-
-const PasswordResetRequestForm = () => {
+const ResetPasswordRequestForm = () => {
   // This endpoint don't return form errors instead we
   // manually handle the success and cath 500 error.
 
@@ -35,13 +37,13 @@ const PasswordResetRequestForm = () => {
 
   const [message, setMessage] = useState<string>();
 
-  const { register, handleSubmit, errors } = useForm<PasswordResetRequestFormInputs>({
-    resolver: yupResolver(PasswordResetRequestFormSchema)
+  const { mutate, isLoading } = useResetPasswordRequestMutation();
+
+  const { register, handleSubmit, errors } = useForm<FormData>({
+    resolver: yupResolver(ResetPasswordRequestFormSchema)
   });
 
-  const { mutate, isLoading } = usePasswordResetRequestMutation();
-
-  const onSubmit = (data: PasswordResetRequestFormInputs) => {
+  const onSubmit = handleSubmit((data) => {
     setError(false);
 
     setSuccess(false);
@@ -60,7 +62,7 @@ const PasswordResetRequestForm = () => {
         setMessage('Oops! Something went wrong.');
       }
     });
-  };
+  });
 
   return (
     <>
@@ -91,7 +93,7 @@ const PasswordResetRequestForm = () => {
         </Grid>
       )}
       {!success && (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={onSubmit}>
           <Grid gap={2}>
             <FormControl id='email' isInvalid={errors.email?.message !== undefined}>
               <FormLabel>Email</FormLabel>
@@ -113,4 +115,4 @@ const PasswordResetRequestForm = () => {
   );
 };
 
-export default PasswordResetRequestForm;
+export default ResetPasswordRequestForm;

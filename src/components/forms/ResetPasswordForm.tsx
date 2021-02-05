@@ -16,49 +16,53 @@ import React from 'react';
 import { mapServerErrors } from 'utils/reactHookFormUtils';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { usePasswordResetMutation } from 'services/password.services';
+import { useResetPasswordMutation } from 'services/password.services';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-const PasswordResetFormSchema = yup.object().shape({
-  password: yup.string().required('Password is required.'),
+type FormData = {
+  confirmPassword: string;
+  password: string;
+};
+
+const ResetPasswordFormSchema = yup.object().shape({
   confirmPassword: yup
     .string()
     .required('Please confirm your password.')
-    .oneOf([yup.ref('password'), null], 'Password must match.')
+    .oneOf([yup.ref('password'), null], 'Password must match.'),
+  password: yup.string().required('Password is required.')
 });
 
-export type PasswordResetFormInputs = yup.InferType<typeof PasswordResetFormSchema>;
-
-export interface PasswordResetFormProps {
+export interface ResetPasswordFormProps {
   token: string;
 }
 
-const PasswordResetForm: React.VFC<PasswordResetFormProps> = ({ token }) => {
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const { register, handleSubmit, errors, setError } = useForm<PasswordResetFormInputs>({
-    resolver: yupResolver(PasswordResetFormSchema)
-  });
-
+const ResetPasswordForm: React.VFC<ResetPasswordFormProps> = ({ token }) => {
   const dispatch = useDispatch();
 
-  const { mutate, isLoading } = usePasswordResetMutation(token);
+  const [showPassword, setShowPassword] = React.useState(false);
 
-  const onSubmit = (data: PasswordResetFormInputs) => {
+  const { mutate, isLoading } = useResetPasswordMutation(token);
+
+  const { register, handleSubmit, errors, setError } = useForm<FormData>({
+    resolver: yupResolver(ResetPasswordFormSchema)
+  });
+
+  const onSubmit = handleSubmit((data) => {
     dispatch(startAuth());
+
     mutate(data, {
       onSuccess: (res) => {
-        dispatch(authSuccess(res.data));
+        dispatch(authSuccess(res.data.data));
       },
       onError: (error) => {
         mapServerErrors(error, setError);
         dispatch(authFailed());
       }
     });
-  };
+  });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={onSubmit}>
       <Grid gap={2}>
         <FormControl id='password' isInvalid={errors.password?.message !== undefined}>
           <FormLabel>Password</FormLabel>
@@ -95,4 +99,4 @@ const PasswordResetForm: React.VFC<PasswordResetFormProps> = ({ token }) => {
   );
 };
 
-export default PasswordResetForm;
+export default ResetPasswordForm;
