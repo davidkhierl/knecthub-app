@@ -1,33 +1,52 @@
 import { AxiosError, AxiosResponse } from 'axios';
-import api, { ResponseError } from './api';
 
+import api from './api';
 import { useMutation } from 'react-query';
 
-export interface PasswordResetPostRequest {
+export interface ResetPasswordPostRequest {
   email: string;
 }
 
-export const postPasswordReset = (request: PasswordResetPostRequest) =>
-  api.post<{ message: string }>('/password/reset', request);
+export const postResetPassword = (request: ResetPasswordPostRequest) =>
+  api.post<StandardResponse>('/password/reset', request);
 
-export function usePasswordResetRequestMutation() {
+export function useResetPasswordRequestMutation() {
   return useMutation<
-    AxiosResponse<{ message: string }>,
-    AxiosError<string>,
-    PasswordResetPostRequest
-  >(postPasswordReset);
+    AxiosResponse<StandardResponse>,
+    AxiosError<StandardErrorResponse>,
+    ResetPasswordPostRequest
+  >(postResetPassword);
 }
 
-export interface PasswordResetPatchRequest {
+export interface ResetPasswordPatchRequest {
   password: string;
   confirmPassword: string;
 }
 
-export const patchPasswordReset = (request: PasswordResetPatchRequest, token: string) =>
-  api.patch<User>(`/password/reset?token=${token}`, request);
+export const patchResetPassword = (request: ResetPasswordPatchRequest, token: string) =>
+  api.patch<StandardResponse<User>>(`/password/reset?token=${token}`, request);
 
-export function usePasswordResetMutation(token: string) {
-  return useMutation<AxiosResponse<User>, AxiosError<ResponseError[]>, PasswordResetPatchRequest>(
-    (request) => patchPasswordReset(request, token)
-  );
+export function useResetPasswordMutation(token: string) {
+  return useMutation<
+    AxiosResponse<StandardResponse<User>>,
+    AxiosError<StandardErrorResponse>,
+    ResetPasswordPatchRequest
+  >((request) => patchResetPassword(request, token));
+}
+
+export interface ChangePasswordPatchRequest {
+  confirmNewPassword: string;
+  currentPassword: string;
+  newPassword: string;
+}
+
+export const patchChangePassword = (request: ChangePasswordPatchRequest) =>
+  api.patch<StandardResponse>('/password', request);
+
+export function useChangePasswordMutation() {
+  return useMutation<
+    AxiosResponse<StandardResponse>,
+    AxiosError<StandardErrorResponse>,
+    ChangePasswordPatchRequest
+  >((request) => patchChangePassword(request));
 }

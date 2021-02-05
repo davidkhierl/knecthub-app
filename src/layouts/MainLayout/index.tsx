@@ -15,6 +15,7 @@ import {
   Spacer,
   Tooltip,
   useColorModeValue,
+  useMediaQuery,
   useToast
 } from '@chakra-ui/react';
 import React, { Suspense } from 'react';
@@ -30,6 +31,8 @@ import { useDispatch } from 'react-redux';
 import useUserStore from 'store/useUserStore';
 
 const MainLayout: React.FC = ({ children }) => {
+  const [isLargerThan360] = useMediaQuery('(min-width: 360px)');
+
   const headerBg = useColorModeValue('white', 'gray.700');
 
   const user = useUserStore((state) => state.user);
@@ -39,7 +42,7 @@ const MainLayout: React.FC = ({ children }) => {
   const toast = useToast();
 
   return (
-    <Flex h='100%' flexDirection='column'>
+    <Flex minH='100vh' flexDirection='column'>
       <Box
         as='header'
         h='60px'
@@ -49,8 +52,11 @@ const MainLayout: React.FC = ({ children }) => {
         alignItems='center'
         px={4}
         boxShadow='md'>
-        <KnecthubLogo to='/' />
-        <HStack as='nav' spacing='8px' ml='auto'>
+        <KnecthubLogo
+          to='/'
+          variant={isLargerThan360 ? 'logo-with-text-primary' : 'logo-only-primary'}
+        />
+        <HStack as='nav' spacing='8px' ml='auto' display={{ base: 'none', sm: 'flex' }}>
           <NavLinkRouter to='/' tooltipLabel='Home'>
             Home
           </NavLinkRouter>
