@@ -2,7 +2,6 @@ import {
   Avatar,
   Box,
   BoxProps,
-  Button,
   Center,
   Text,
   VStack,
@@ -27,9 +26,7 @@ const ProfileCard = forwardRef<ProfileCardProps, 'div'>(
 
     const styles = useStyleConfig('ProfileCard');
 
-    // const [user, setUser] = useState<User | null | undefined>(userProps || currentUser)
-
-    const user = userProps || currentUser;
+    const user = userProps ?? currentUser;
 
     return (
       <Box ref={ref} sx={styles} {...props}>
@@ -78,9 +75,18 @@ const ProfileCard = forwardRef<ProfileCardProps, 'div'>(
             Update Profile
           </ButtonLinkRouter>
         ) : (
-          <Button mt={4} isFullWidth>
-            Send Connection Request
-          </Button>
+          <>
+            {/* {userConnection?.status === 'pending' && (
+              <Button mt={4} isFullWidth disabled>
+                Request Sent
+              </Button>
+            )} */}
+            {/* {!userConnection && (
+              <Button mt={4} isFullWidth>
+                Send Connection Request
+              </Button>
+            )} */}
+          </>
         )}
       </Box>
     );

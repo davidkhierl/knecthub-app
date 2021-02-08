@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AppThunk } from './store';
 import { getAuthLogout } from 'services/auth.services';
 import { getCurrentUser } from 'services/user.services';
+import { queryClient } from 'index';
 import useUserStore from 'store/useUserStore';
 
 interface AuthReducer {
@@ -31,6 +32,7 @@ const authSlice = createSlice({
       state.loading = false;
       state.isAuthenticated = false;
       window.localStorage.removeItem('user');
+      queryClient.clear();
     }
   }
 });

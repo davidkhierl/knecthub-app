@@ -12,7 +12,7 @@ const NavLinkRouter = forwardRef<NavLinkRouterProps, 'button'>(
   ({ tooltipLabel, ...props }, ref) => {
     const match = useRouteMatch({ path: props.to, exact: true });
 
-    const matchedBg = useColorModeValue('gray.100', 'gray.600');
+    const matchedBg = useColorModeValue('gray.50', 'gray.600');
 
     return (
       <Tooltip label={tooltipLabel} hasArrow arrowSize={6} borderRadius='6px'>
