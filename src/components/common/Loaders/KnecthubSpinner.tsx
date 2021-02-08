@@ -9,7 +9,7 @@ const KnecthubSpinner: React.VFC<Omit<Partial<LottieLoaderProps>, 'animationData
   ...props
 }) => {
   return (
-    <Center h='100%'>
+    <Center flexGrow={1} h='100%'>
       <LottieLoader {...props} animationData={KnecthubSpinnerAnimationData} size={size} />
     </Center>
   );
