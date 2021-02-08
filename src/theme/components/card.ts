@@ -3,12 +3,12 @@ import { mode } from '@chakra-ui/theme-tools';
 
 const _default: ComponentStyleConfig = {
   baseStyle: (props) => ({
-    minHeight: '200px',
-    rounded: 8,
+    rounded: 12,
     p: 4,
-    boxShadow: 'md',
+    boxShadow: 'lg',
     border: '1px',
-    borderColor: mode('gray.200', 'gray.600')(props)
+    borderColor: mode('gray.50', 'gray.600')(props),
+    bg: mode('white', 'gray.600')(props)
   })
 };
 

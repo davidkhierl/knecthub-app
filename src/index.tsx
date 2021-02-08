@@ -25,7 +25,7 @@ import theme from 'theme';
 //   tracesSampleRate: 1.0
 // });
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,12 +1,10 @@
-import { Button, Divider, Heading, SimpleGrid, useColorMode } from '@chakra-ui/react';
+import { Divider, Heading, SimpleGrid } from '@chakra-ui/react';
 
 import Container from 'components/common/Container';
 import React from 'react';
 import WebinarCard from 'components/common/WebinarCard';
 
 const Home = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
-
   return (
     <Container mt={6}>
       <Heading>Upcoming Webinars</Heading>
@@ -17,7 +15,6 @@ const Home = () => {
         <WebinarCard>Webinar 3</WebinarCard>
         <WebinarCard>Webinar 4</WebinarCard>
         <WebinarCard>Webinar Card</WebinarCard>
-        <Button onClick={toggleColorMode}>Toggle {colorMode === 'light' ? 'Dark' : 'Light'}</Button>
       </SimpleGrid>
     </Container>
   );
