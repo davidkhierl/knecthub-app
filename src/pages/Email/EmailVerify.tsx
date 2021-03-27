@@ -40,7 +40,8 @@ const EmailVerify = () => {
             setError({ message: error.response ? error.response.data.message : error.message });
           });
     })();
-  }, [setUser, token]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <DefaultLayout

@@ -14,7 +14,7 @@ import {
 import React, { useState } from 'react';
 import { authFailed, authSuccess, startAuth } from 'redux/authSlice';
 
-import MotionAlert from 'components/common/Motions/MotionAlert';
+import MotionAlert from 'components/motions/MotionAlert';
 import { useAuthMutation } from 'services/auth.services';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';

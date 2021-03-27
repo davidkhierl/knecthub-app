@@ -43,7 +43,8 @@ const MainLayout: React.FC = ({ children }) => {
         flexShrink={0}
         alignItems='center'
         px={4}
-        boxShadow='md'>
+        boxShadow='md'
+        transition='all .3s eas'>
         <KnecthubLogo
           to='/'
           variant={isLargerThan360 ? 'logo-with-text-primary' : 'logo-only-primary'}

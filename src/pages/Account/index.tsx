@@ -7,7 +7,7 @@ import { find, isMatch } from 'lodash';
 import ChangePasswordForm from 'components/forms/ChangePasswordForm';
 import Container from 'components/common/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import NavLinkRouter from 'components/common/NavLinkRouter';
+import NavLinkRouter from 'components/common/LinkRouter/NavLinkRouter';
 import UpdatePrimaryEmailForm from 'components/forms/UpdatePrimaryEmailForm';
 import UpdateProfileForm from 'components/forms/UpdateProfileForm';
 import UpdateUserForm from 'components/forms/UpdateUserForm';
@@ -16,7 +16,7 @@ import useUserStore from 'store/useUserStore';
 const Account = () => {
   const emails = useUserStore((state) => state.user?.emails);
 
-  const [pendingPrimaryEmail, setPendingPrimaryEmail] = useState<UserEmails>();
+  const [pendingPrimaryEmail, setPendingPrimaryEmail] = useState<UserEmail>();
 
   useEffect(() => {
     const pendingPrimary = find(emails, (email) => isMatch(email, { type: 'pendingPrimary' }));

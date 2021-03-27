@@ -1,6 +1,6 @@
 import { Box, Center, Flex, Heading } from '@chakra-ui/react';
 
-import ButtonLinkRouter from 'components/common/ButtonLinkRouter';
+import ButtonLinkRouter from 'components/common/LinkRouter/ButtonLinkRouter';
 import DefaultLayout from 'layouts/DefaultLayout';
 import React from 'react';
 import RegisterForm from 'components/forms/RegisterForm';

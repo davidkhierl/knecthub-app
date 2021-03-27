@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import DefaultLayout from 'layouts/DefaultLayout';
 import KnecthubSpinner from 'components/common/Loaders/KnecthubSpinner';
-import MotionAlert from 'components/common/Motions/MotionAlert';
+import MotionAlert from 'components/motions/MotionAlert';
 import { ReactComponent as MyPasswordArtwork } from 'assets/images/artworks/home.svg';
 import ResetPasswordForm from 'components/forms/ResetPasswordForm';
 import ResetPasswordRequestForm from 'components/forms/ResetPasswordRequestForm';

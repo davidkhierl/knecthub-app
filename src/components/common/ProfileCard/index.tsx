@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { faEnvelope, faMapPin, faPhone } from '@fortawesome/free-solid-svg-icons';
 
-import ButtonLinkRouter from '../ButtonLinkRouter';
+import ButtonLinkRouter from '../LinkRouter/ButtonLinkRouter';
 import { FontAwesomeIcon } from 'components/chakra-factory';
 import React from 'react';
 import useUserStore from 'store/useUserStore';

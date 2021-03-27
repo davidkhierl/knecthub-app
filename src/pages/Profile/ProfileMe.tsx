@@ -1,23 +1,17 @@
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Box, useColorModeValue } from '@chakra-ui/react';
 
-import ConnectionsList from 'components/connections/ConnectionsList';
-import Container from 'components/common/Container';
-import ProfileCard from 'components/common/ProfileCard';
+import ConnectionGrid from 'components/connections/ConnectionGrid';
+import ProfileHeader from 'components/profile/ProfileHeader';
 import React from 'react';
 
 const ProfileMe = () => {
+  const mainBoxBg = useColorModeValue('gray.50', 'gray.800');
+
   return (
-    <Container mt={8}>
-      <Grid templateColumns='repeat(5, 1fr)' gap={6}>
-        <GridItem colSpan={[5, 5, 5, 1]}>
-          <ProfileCard />
-        </GridItem>
-        <GridItem colSpan={[5, 5, 5, 3]}>webinars to attend</GridItem>
-        <GridItem colSpan={[5, 5, 5, 1]}>
-          <ConnectionsList />
-        </GridItem>
-      </Grid>
-    </Container>
+    <Box bg={mainBoxBg} flexGrow={1} transition='all .3s eas'>
+      <ProfileHeader />
+      <ConnectionGrid mt={6} />
+    </Box>
   );
 };
 

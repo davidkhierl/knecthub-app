@@ -4,7 +4,7 @@ import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import App from 'App';
-import PageTitleHelper from 'components/PageTitleHelper';
+import PageTitleHelper from 'components/helpers/PageTitleHelper';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ReactQueryDevtools } from 'react-query/devtools';

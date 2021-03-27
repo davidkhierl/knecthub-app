@@ -14,15 +14,15 @@ import {
   useColorMode,
   useDisclosure
 } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import { faChevronRight, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { AnimatePresence } from 'framer-motion';
 import Card from 'components/common/Card';
 import Container from 'components/common/Container';
 import { FontAwesomeIcon } from 'components/chakra-factory';
-import MotionCloudIcon from 'components/common/Motions/MotionCloudIcon';
-import MotionNightIcon from 'components/common/Motions/MotionNightIcon';
-import React from 'react';
+import MotionCloudIcon from 'components/motions/MotionCloudIcon';
+import MotionNightIcon from 'components/motions/MotionNightIcon';
 import { Link as RouterLink } from 'react-router-dom';
 import { revokeAuth } from 'redux/authSlice';
 import { useDispatch } from 'react-redux';
@@ -34,6 +34,8 @@ const MainLayoutMobileNav = forwardRef<BoxProps, 'nav'>((props, ref) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const [colorModeSwitch, setColoModeSwitch] = useState(colorMode);
 
   const dispatch = useDispatch();
 
@@ -72,8 +74,8 @@ const MainLayoutMobileNav = forwardRef<BoxProps, 'nav'>((props, ref) => {
                   <FontAwesomeIcon ml='auto' alignSelf='center' icon={faChevronRight} />
                 </Card>
                 <Card display='flex'>
-                  <AnimatePresence exitBeforeEnter initial={false}>
-                    {colorMode === 'light' && (
+                  <AnimatePresence exitBeforeEnter initial={false} onExitComplete={toggleColorMode}>
+                    {colorModeSwitch === 'light' && (
                       <MotionCloudIcon
                         key='light'
                         h='48px'
@@ -84,7 +86,7 @@ const MainLayoutMobileNav = forwardRef<BoxProps, 'nav'>((props, ref) => {
                         exit={{ opacity: 1, rotate: 330 }}
                       />
                     )}
-                    {colorMode === 'dark' && (
+                    {colorModeSwitch === 'dark' && (
                       <MotionNightIcon
                         key='dark'
                         h='48px'
@@ -107,7 +109,7 @@ const MainLayoutMobileNav = forwardRef<BoxProps, 'nav'>((props, ref) => {
                     size='lg'
                     ml='auto'
                     alignSelf='center'
-                    onChange={toggleColorMode}
+                    onChange={() => setColoModeSwitch(colorMode === 'light' ? 'dark' : 'light')}
                     isChecked={colorMode === 'dark'}
                   />
                 </Card>

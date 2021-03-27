@@ -11,7 +11,7 @@ export type MotionCloudIconProps = Omit<ChakraProps, keyof MotionProps> &
 
 const ChakraCloudIcon = chakra(CloudIcon);
 
-const MotionCloudIcon = motion.custom(
+const MotionCloudIcon = motion(
   forwardRef<MotionCloudIconProps, 'svg'>((props, ref) => {
     const chakraProps = Object.fromEntries(
       // do not pass framer props to DOM element

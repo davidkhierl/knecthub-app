@@ -13,8 +13,8 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
-import ButtonLinkRouter from 'components/common/ButtonLinkRouter';
-import MotionAlert from 'components/common/Motions/MotionAlert';
+import ButtonLinkRouter from 'components/common/LinkRouter/ButtonLinkRouter';
+import MotionAlert from 'components/motions/MotionAlert';
 import { useForm } from 'react-hook-form';
 import { useResetPasswordRequestMutation } from 'services/password.services';
 import { yupResolver } from '@hookform/resolvers/yup';

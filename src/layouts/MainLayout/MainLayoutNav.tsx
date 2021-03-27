@@ -12,7 +12,8 @@ import {
   Text,
   Tooltip,
   VStack,
-  forwardRef
+  forwardRef,
+  useColorModeValue
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import {
@@ -24,9 +25,9 @@ import {
 
 import { AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from 'components/chakra-factory';
-import MotionCloudIcon from 'components/common/Motions/MotionCloudIcon';
-import MotionNightIcon from 'components/common/Motions/MotionNightIcon';
-import NavLinkRouter from 'components/common/NavLinkRouter';
+import MotionCloudIcon from 'components/motions/MotionCloudIcon';
+import MotionNightIcon from 'components/motions/MotionNightIcon';
+import NavLinkRouter from 'components/common/LinkRouter/NavLinkRouter';
 import { Link as RouterLink } from 'react-router-dom';
 import { revokeAuth } from 'redux/authSlice';
 import { useColorMode } from '@chakra-ui/react';
@@ -47,7 +48,7 @@ const MainLayoutNav = forwardRef<StackProps, 'nav'>((props, ref) => {
       <NavLinkRouter to='/' tooltipLabel='Home' rounded={12}>
         Home
       </NavLinkRouter>
-      <NavLinkRouter to='/profile/me' tooltipLabel={user?.fullName} rounded={12}>
+      <NavLinkRouter to='/profile/me' tooltipLabel={user?.fullName} rounded={12} px={2}>
         <Avatar size='sm' name={user?.fullName} bg={user?.profile.avatarBgColor} mr={2} />
         {user?.fullName}
       </NavLinkRouter>
@@ -96,15 +97,22 @@ const MainLayoutNav = forwardRef<StackProps, 'nav'>((props, ref) => {
               rounded={12}
             />
           </Tooltip>
-          <MenuList px={4} rounded={12} w='380px'>
+          <MenuList
+            px={4}
+            rounded={12}
+            w='380px'
+            boxShadow='md'
+            border='1px'
+            borderColor={useColorModeValue('gray.100', 'gray.600')}>
             <VStack spacing={2} alignItems='stretch'>
               <MenuItem
                 as={RouterLink}
                 to='/profile/me'
                 rounded={12}
                 p={4}
-                fontWeight='medium'
-                boxShadow='md'>
+                boxShadow='md'
+                border='1px'
+                borderColor={useColorModeValue('gray.100', 'gray.600')}>
                 <Avatar name={user?.fullName} bg={user?.profile.avatarBgColor} mr={4} />
                 <Box>
                   <Text fontWeight='medium'>{user?.fullName}</Text>

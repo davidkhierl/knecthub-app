@@ -11,7 +11,7 @@ export type MotionNightIconProps = Omit<ChakraProps, keyof MotionProps> &
 
 const ChakraNightIcon = chakra(NightIcon);
 
-const MotionNightIcon = motion.custom(
+const MotionNightIcon = motion(
   forwardRef<MotionNightIconProps, 'svg'>((props, ref) => {
     const chakraProps = Object.fromEntries(
       // do not pass framer props to DOM element

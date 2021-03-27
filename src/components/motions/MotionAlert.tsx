@@ -8,7 +8,7 @@ export type MotionAlertProps = Omit<ChakraProps, keyof MotionProps> &
     as?: React.ElementType;
   };
 
-const MotionAlert = motion.custom(
+const MotionAlert = motion(
   forwardRef<MotionAlertProps, typeof Alert>((props, ref) => {
     const chakraProps = Object.fromEntries(
       // do not pass framer props to DOM element

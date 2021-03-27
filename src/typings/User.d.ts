@@ -1,5 +1,5 @@
 interface User {
-  emails: UserEmails[];
+  emails: UserEmail[];
   firstName: string;
   fullName: string;
   id: string;
@@ -7,7 +7,7 @@ interface User {
   lastName: string;
   profile: Profile;
 }
-interface UserEmails {
+interface UserEmail {
   email: string;
   type: 'primary' | 'secondary' | 'pendingPrimary';
   confirmed?: boolean;
