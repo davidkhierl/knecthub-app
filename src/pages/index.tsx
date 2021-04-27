@@ -1,16 +1,5 @@
-import Head from 'next/head';
-import React from 'react';
+import HomePage from '@/modules/home/HomePage';
 
-export default function KnecthubApp() {
-  return (
-    <>
-      <Head>
-        <title>Knecthub</title>
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <h1>yow!</h1>
-    </>
-  );
-}
+export default HomePage;
 
-export { getServerSideProps } from '@/chakra-ui/chakra';
+// export { getServerSideProps } from '@/chakra-ui/chakra';
