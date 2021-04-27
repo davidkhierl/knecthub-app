@@ -2650,10 +2650,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.14.41":
-  version: 14.14.41
-  resolution: "@types/node@npm:14.14.41"
-  checksum: 37dfb639644c8ee9b9846106834983f590d494b855e74645a4f169ea24199f7559366d25f6e72e83ba940b59eb6370e002bd53963d098d6d9fdf935a37011417
+"@types/node@npm:^15.0.0":
+  version: 15.0.0
+  resolution: "@types/node@npm:15.0.0"
+  checksum: 9d3ced65feb73444056941cc7bcbbc4885b60fb22ba3c38e1ad26c96909dd914e1d87fa4c22a5dbada8588606c56116bbd6d42569e87513866919b801e314d2e
+  languageName: node
+  linkType: hard
+
+"@types/nprogress@npm:^0":
+  version: 0.2.0
+  resolution: "@types/nprogress@npm:0.2.0"
+  checksum: f5831461b6984302ae8f4f7efaf963f9faaf8be1879db96bd2d4d48b32e4701141275fe5908b7b4c65fa817d92a09f3f95dbceed7146c1227017dac8915a6e90
   languageName: node
   linkType: hard
 
@@ -4131,9 +4138,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^4.1.9":
-  version: 4.1.9
-  resolution: "framer-motion@npm:4.1.9"
+"framer-motion@npm:^4.1.10":
+  version: 4.1.10
+  resolution: "framer-motion@npm:4.1.10"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     framesync: 5.3.0
@@ -4147,7 +4154,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: c44c042e770f64d9e4e557205e164034e79f2816bb01e7367ed777f2d19e27b1f692bb71d211416e01033a2ef12baf114060a8f3d2b232262e21033bd98d00c9
+  checksum: ecb4067e46770aa8e0b412f4fb5318ed503745b44f9b5940a9cc4564e6d19ff6822d4a6ee0607fcff4bf49f053a5be19d49aa9c5b3c92622abe4a7dc1c2d5638
   languageName: node
   linkType: hard
 
@@ -4909,13 +4916,15 @@ fsevents@~2.3.1:
     "@emotion/styled": ^11.3.0
     "@hookform/resolvers": ^2.4.0
     "@svgr/webpack": ^5.5.0
-    "@types/node": ^14.14.41
+    "@types/node": ^15.0.0
+    "@types/nprogress": ^0
     "@types/react": ^17.0.4
     axios: ^0.21.1
-    framer-motion: ^4.1.9
+    framer-motion: ^4.1.10
     immer: ^9.0.2
     lottie-web: ^5.7.8
     next: ^10.1.3
+    nprogress: ^0.2.0
     query-string: ^7.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -4925,7 +4934,7 @@ fsevents@~2.3.1:
     sass: ^1.32.11
     typescript: ^4.2.4
     yup: ^0.32.9
-    zustand: ^3.4.1
+    zustand: ^3.4.2
   languageName: unknown
   linkType: soft
 
@@ -5481,6 +5490,13 @@ fsevents@~2.3.1:
     gauge: ~2.7.3
     set-blocking: ~2.0.0
   checksum: 0cd63f127c1bbda403a112e83b11804aaee2b58b0bc581c3bde9b82e4d957c7ed0ad3bee499af706cdd3599bb93669d7cbbf29fb500407d35fe75687ac96e2c0
+  languageName: node
+  linkType: hard
+
+"nprogress@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "nprogress@npm:0.2.0"
+  checksum: 652dfcfea776f9d9a2c3ad1f79b4cbd3056a03e7c6884966eab70fb184e8e70bfca9e0343ba89d11aa1ed95370d648fb638fab91b5dc027bdad54c8d37c96478
   languageName: node
   linkType: hard
 
@@ -7276,11 +7292,11 @@ typescript@^4.2.4:
   languageName: node
   linkType: hard
 
-"zustand@npm:^3.4.1":
-  version: 3.4.1
-  resolution: "zustand@npm:3.4.1"
+"zustand@npm:^3.4.2":
+  version: 3.4.2
+  resolution: "zustand@npm:3.4.2"
   peerDependencies:
     react: ">=16.8"
-  checksum: d86719ad9fcfc9f9ab601957507a5f18b2cdba0710dcf77497765ba4cf0f70197cb3744e1aa6c9a062ceb187b987faae623c9635ebd4f154c67a8e64e1810e78
+  checksum: 5a16fcce873b6f2acd8bb8cd9e9116bc935470efdde35a322efc4adeaed1263001d26661c694ebf7c137493244137ddbbc39051ad019a31fb8b7e6c029d7e1ca
   languageName: node
   linkType: hard
