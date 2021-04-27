@@ -6,28 +6,20 @@ import {
   Grid,
   Link,
   Text,
-  useBreakpointValue,
-  useColorMode,
-  useColorModeValue
+  useBreakpointValue
 } from '@chakra-ui/react';
-import { ImFacebook, ImLinkedin2, ImSun, ImTwitter } from 'react-icons/im';
 
 import CardBoxLayout from '@/components/layouts/CardBoxLayout';
 import { FcGoogle } from 'react-icons/fc';
 import Head from 'next/head';
-import { IoMoon } from 'react-icons/io5';
 import NextLink from 'next/link';
 import ProtectedRoute from '@/modules/auth/ProtectedRoute';
 import React from 'react';
 import SignInWithCredentialsForm from '@/components/forms/SignInWithCredentialsForm';
-import useAuthStore from '@/modules/auth/useAuthStore';
+import useAuthStore from '@/store/useAuthStore';
 
 const SignInPage = () => {
   const logoHeight = useBreakpointValue({ base: '28px', md: '32px' });
-
-  const { toggleColorMode } = useColorMode();
-
-  const colorModeIcon = useColorModeValue(<IoMoon />, <ImSun />);
 
   const error = useAuthStore((state) => state.error);
 

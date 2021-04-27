@@ -5,18 +5,18 @@ import { useMutation } from 'react-query';
 
 export const getAuthLogout = () => api.get('/auth/signout');
 
-interface Request {
+interface AuthSignInRequest {
   email: string;
   password: string;
 }
 
-export const postAuthLogin = (request: Request) =>
+export const postAuthSignIn = (request: AuthSignInRequest) =>
   api.post<StandardResponse<AuthSuccessResponse>>('/auth/signin', request);
 
-export function useAuthMutation() {
+export function useAuthSignInMutation() {
   return useMutation<
     AxiosResponse<StandardResponse<AuthSuccessResponse>>,
     AxiosError<StandardErrorResponse>,
-    Request
-  >(postAuthLogin);
+    AuthSignInRequest
+  >(postAuthSignIn);
 }

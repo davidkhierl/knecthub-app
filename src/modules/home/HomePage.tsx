@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import React from 'react';
-import useAuthStore from '../auth/useAuthStore';
+import useAuthStore from '../../store/useAuthStore';
 
 const HomePage = () => {
   const user = useAuthStore((state) => state.user);

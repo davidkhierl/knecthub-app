@@ -12,8 +12,8 @@ import {
 } from '@chakra-ui/react';
 
 import React from 'react';
-import { useAuthMutation } from '@/modules/auth/auth.services';
-import useAuthStore from '@/modules/auth/useAuthStore';
+import { useAuthSignInMutation } from '@/services/auth.services';
+import useAuthStore from '@/store/useAuthStore';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -44,7 +44,7 @@ const SignInWithCredentialsForm = () => {
 
   const error = useAuthStore((state) => state.error);
 
-  const { mutate, isLoading } = useAuthMutation();
+  const { mutate, isLoading } = useAuthSignInMutation();
 
   const onSubmit = handleSubmit((data) => {
     setIsLoading(true);
