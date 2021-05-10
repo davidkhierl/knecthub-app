@@ -2,17 +2,18 @@ import api from '@/services/api';
 import create from 'zustand';
 
 type AuthStore = {
-  user: User | null;
+  authFailed: (error?: StandardErrorResponse) => void;
+  authSuccess: (user: User) => void;
   authenticated: boolean;
   error?: StandardErrorResponse;
   isLoading: boolean;
   isSilentLoadingUser: boolean;
+  loadSignedUser: () => void;
   setIsLoading: (loading: boolean) => void;
   setIsSilentLoadingUser: (loading: boolean) => void;
-  loadSignedUser: () => void;
-  authSuccess: (user: User) => void;
-  authFailed: (error?: StandardErrorResponse) => void;
+  setUser: (user: User | null) => void;
   signOut: () => void;
+  user: User | null;
 };
 
 const useAuthStore = create<AuthStore>((set) => ({
@@ -73,6 +74,7 @@ const useAuthStore = create<AuthStore>((set) => ({
       set({ user: null, isLoading: false, authenticated: false });
     }
   },
-  user: null
+  user: null,
+  setUser: (user) => set({ user })
 }));
 export default useAuthStore;

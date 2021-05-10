@@ -1,13 +1,4 @@
-import {
-  Button,
-  Center,
-  Divider,
-  Flex,
-  Grid,
-  Link,
-  Text,
-  useBreakpointValue
-} from '@chakra-ui/react';
+import { Button, Center, Divider, Flex, Grid, Link, Text } from '@chakra-ui/react';
 
 import CardBoxLayout from '@/components/layouts/CardBoxLayout';
 import { FcGoogle } from 'react-icons/fc';
@@ -19,10 +10,9 @@ import SignInWithCredentialsForm from '@/components/forms/SignInWithCredentialsF
 import useAuthStore from '@/store/useAuthStore';
 
 const SignInPage = () => {
-  const logoHeight = useBreakpointValue({ base: '28px', md: '32px' });
-
   const error = useAuthStore((state) => state.error);
 
+  console.log('render');
   return (
     <ProtectedRoute redirect={'/'} forNonAuthenticatedUserOnly>
       <Head>
@@ -41,7 +31,11 @@ const SignInPage = () => {
           .
         </Text>
         <Grid gap={2}>
-          <Button variant='outline' leftIcon={<FcGoogle />}>
+          <Button
+            variant='outline'
+            leftIcon={<FcGoogle />}
+            as='a'
+            href={`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google?redirect=test`}>
             Sign in with Google
           </Button>
           {/* <Button variant='outline' leftIcon={<ImFacebook color='#4267B2' />}>

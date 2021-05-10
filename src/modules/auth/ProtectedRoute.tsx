@@ -1,6 +1,6 @@
 import KnecthubSpinner from '@/components/common/KnecthubSpinner';
 import React from 'react';
-import { isServer } from '@/lib/isServer';
+import isServer from '@/lib/isServer';
 import queryString from 'query-string';
 import useAuthStore from '@/store/useAuthStore';
 import { useEffect } from 'react';
