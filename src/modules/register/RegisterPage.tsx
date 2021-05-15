@@ -10,12 +10,11 @@ import React from 'react';
 
 const RegisterPage: PageWithLayout = () => {
   return (
-    <ProtectedRoute redirect='/' forNonAuthenticatedUserOnly>
+    <>
       <Head>
         <title>Create Account | Knecthub</title>
       </Head>
-
-      <Text mb={4} color='gray.300'>
+      <Text mb={4} color='gray.400'>
         By signing up you accept our{' '}
         <NextLink href='/privacy-policy.html'>
           <Link color='orange.400'>Privacy Policy</Link>
@@ -27,14 +26,16 @@ const RegisterPage: PageWithLayout = () => {
         .
       </Text>
       <CreateAccountForm />
-    </ProtectedRoute>
+    </>
   );
 };
 
 RegisterPage.getLayout = (page) => (
-  <CardBoxLayout heading='Create Account' goBackPath='/signin'>
-    {page}
-  </CardBoxLayout>
+  <ProtectedRoute redirect='/' forNonAuthenticatedUserOnly>
+    <CardBoxLayout heading='Create Account' goBackPath='/signin'>
+      {page}
+    </CardBoxLayout>
+  </ProtectedRoute>
 );
 
 export default RegisterPage;

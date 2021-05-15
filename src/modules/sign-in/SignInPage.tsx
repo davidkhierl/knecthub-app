@@ -15,11 +15,11 @@ const SignInPage: PageWithLayout = () => {
   const error = useAuthStore((state) => state.error);
 
   return (
-    <ProtectedRoute redirect={'/'} forNonAuthenticatedUserOnly>
+    <>
       <Head>
         <title>Sign In | Knecthub</title>
       </Head>
-      <Text mb={4} color='gray.300'>
+      <Text mb={4} color='gray.400'>
         By signing in you accept our{' '}
         <NextLink href='/privacy-policy.html'>
           <Link color='orange.400'>Privacy Policy</Link>
@@ -68,10 +68,14 @@ const SignInPage: PageWithLayout = () => {
           Create Account
         </Button>
       </NextLink>
-    </ProtectedRoute>
+    </>
   );
 };
 
-SignInPage.getLayout = (page) => <CardBoxLayout heading='Sign In'>{page}</CardBoxLayout>;
+SignInPage.getLayout = (page) => (
+  <ProtectedRoute redirect={'/'} forNonAuthenticatedUserOnly>
+    <CardBoxLayout heading='Sign In'>{page}</CardBoxLayout>
+  </ProtectedRoute>
+);
 
 export default SignInPage;

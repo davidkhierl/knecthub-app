@@ -14,10 +14,10 @@ const breakpoints = createBreakpoints({
 const colors = {
   knectBg: '#272D4E',
   gray: {
-    50: '#edf5fc',
-    100: '#ced5e3',
-    200: '#afb9ce',
-    300: '#8f9eba',
+    50: '#f7fafc',
+    100: '#edf2f7',
+    200: '#e2e8f0',
+    300: '#cbd5e0',
     400: '#7082a7',
     500: '#56688d',
     600: '#43516f',

@@ -1,5 +1,5 @@
 interface User {
-  emails: string;
+  email: string;
   firstName: string;
   fullName: string;
   googleId?: string;

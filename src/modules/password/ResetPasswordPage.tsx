@@ -49,7 +49,7 @@ const ResetPasswordPage: PageWithLayout = () => {
   }, []);
 
   return (
-    <ProtectedRoute redirect='/' forNonAuthenticatedUserOnly>
+    <>
       <Head>
         <title>Reset Password | Knecthub</title>
       </Head>
@@ -68,14 +68,16 @@ const ResetPasswordPage: PageWithLayout = () => {
         </>
       )}
       {!isLoading && token === undefined && <PasswordResetRequestForm />}
-    </ProtectedRoute>
+    </>
   );
 };
 
 ResetPasswordPage.getLayout = (page) => (
-  <CardBoxLayout heading='Reset Password' goBackPath='/signin'>
-    {page}
-  </CardBoxLayout>
+  <ProtectedRoute redirect='/' forNonAuthenticatedUserOnly>
+    <CardBoxLayout heading='Reset Password' goBackPath='/signin'>
+      {page}
+    </CardBoxLayout>
+  </ProtectedRoute>
 );
 
 export default ResetPasswordPage;

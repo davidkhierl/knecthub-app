@@ -59,9 +59,9 @@ const useAuthStore = create<AuthStore>((set) => ({
   },
   signOut: async () => {
     try {
-      await api.get<StandardResponse>('auth/signout');
-
       localStorage.removeItem('pre-fetch-user');
+
+      await api.get<StandardResponse>('auth/signout');
 
       set({ user: null, isLoading: false, authenticated: false });
     } catch (error) {
