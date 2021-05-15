@@ -1,7 +1,8 @@
 import api from '@/services/api';
 import create from 'zustand';
+import hasSignedUser from '@/lib/hasSignedUser';
 
-type AuthStore = {
+export type AuthStore = {
   authFailed: (error?: StandardErrorResponse) => void;
   authSuccess: (user: User) => void;
   authenticated: boolean;
@@ -19,7 +20,7 @@ type AuthStore = {
 const useAuthStore = create<AuthStore>((set) => ({
   authenticated: false,
   error: undefined,
-  isLoading: true,
+  isLoading: hasSignedUser,
   isSilentLoadingUser: false,
   setIsLoading: (loading) => {
     set({ isLoading: loading });
@@ -28,10 +29,7 @@ const useAuthStore = create<AuthStore>((set) => ({
     set({ isSilentLoadingUser: loading });
   },
   loadSignedUser: async () => {
-    const hasUserSigned =
-      typeof window !== 'undefined' ? localStorage.getItem('pre-fetch-user') : false;
-
-    if (hasUserSigned) {
+    if (hasSignedUser) {
       try {
         set({ isSilentLoadingUser: true });
 
@@ -49,8 +47,6 @@ const useAuthStore = create<AuthStore>((set) => ({
 
         set({ user: null, isLoading: false, isSilentLoadingUser: false, authenticated: false });
       }
-    } else {
-      set({ user: null, isLoading: false, authenticated: false });
     }
   },
   authSuccess: (user) => {

@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import 'nprogress/nprogress.css';
 
-import type { AppProps } from 'next/app';
+import { AppPropsWithLayout } from '@/typings/page';
 import Chakra from '@/chakra-ui/chakra';
 import NProgress from 'nprogress';
 import { QueryClientProvider } from 'react-query';
@@ -16,13 +16,13 @@ Router.events.on('routeChangeStart', () => {
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
-      <Chakra cookies={pageProps.cookies}>
-        <Component {...pageProps} />
-      </Chakra>
+      <Chakra cookies={pageProps.cookies}>{getLayout(<Component {...pageProps} />)}</Chakra>
     </QueryClientProvider>
   );
 }

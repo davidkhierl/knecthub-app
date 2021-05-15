@@ -11,7 +11,7 @@ export interface LottieLoaderProps {
   size?: string | number;
 }
 
-const LottieLoader: React.FC<LottieLoaderProps> = (props) => {
+const LottieLoader = (props: LottieLoaderProps) => {
   const element = useRef<HTMLDivElement>(null);
   useEffect(() => {
     lottie.loadAnimation({

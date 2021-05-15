@@ -1,5 +1,5 @@
 import { Box, Center, Container, Flex, Heading, IconButton, Tooltip } from '@chakra-ui/react';
-import { useBreakpointValue, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 
 import { BiArrowBack } from 'react-icons/bi';
 import Card from '@/components/common/Card';
@@ -18,8 +18,6 @@ export interface CardBoxLayoutProps {
 const CardBoxLayout = ({ children, heading, goBackPath }: CardBoxLayoutProps) => {
   const router = useRouter();
 
-  const logoHeight = useBreakpointValue({ base: '28px', md: '32px' });
-
   const { toggleColorMode } = useColorMode();
 
   const colorModeIcon = useColorModeValue(<IoMoon />, <ImSun />);
@@ -27,7 +25,7 @@ const CardBoxLayout = ({ children, heading, goBackPath }: CardBoxLayoutProps) =>
   return (
     <Container minH='full' py={8} display='flex' flexDirection='column'>
       <Box m='auto' alignSelf='safe center' width='full'>
-        <KnecthubLogo to='/' height={logoHeight} />
+        <KnecthubLogo to='/' height='28px' />
         <Card mt={6}>
           <Flex>
             {goBackPath && (

@@ -43,6 +43,8 @@ const ProtectedRoute = (props: AuthenticatedRouteProps) => {
       router.push(props.redirect ?? '/signin');
   }, [isLoading, authenticated, props.forNonAuthenticatedUserOnly]);
 
+  // console.log('auth render');
+
   if (props.forNonAuthenticatedUserOnly) {
     if ((authenticated && user && !isLoading) || isSilentLoadingUser) return <KnecthubSpinner />;
   } else {
