@@ -8,7 +8,7 @@
     "@chakra-ui/theme-tools": "^1.1.7",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@hookform/resolvers": "^2.5.0",
+    "@hookform/resolvers": "^2.5.1",
     "axios": "^0.21.1",
     "framer-motion": "^4.1.16",
     "immer": "^9.0.2",

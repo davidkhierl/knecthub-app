@@ -2368,12 +2368,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "@hookform/resolvers@npm:2.5.0"
+"@hookform/resolvers@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "@hookform/resolvers@npm:2.5.1"
   peerDependencies:
     react-hook-form: ^7.0.0
-  checksum: 5af95e9e6a539d1c5e5c37648bf98f1615f643776ba75e35edca102bd9aff30a3de46430b9ed39e2e4d670d90f27502d609e359ef38c24d0ed110fb82af3cb25
+  checksum: 6056ff42b02e8c8e6e4178d4a3e1e3158c9dc2de7458e5e6225c38238301b81454283b2e22cf1ca28e468dfbfd5a7656fcd2c5bed7d0f812ac22b2d20d00b8f0
   languageName: node
   linkType: hard
 
@@ -4925,7 +4925,7 @@ fsevents@~2.3.1:
     "@chakra-ui/theme-tools": ^1.1.7
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    "@hookform/resolvers": ^2.5.0
+    "@hookform/resolvers": ^2.5.1
     "@svgr/webpack": ^5.5.0
     "@types/node": ^15.3.0
     "@types/nprogress": ^0.2.0
