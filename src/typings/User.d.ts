@@ -1,15 +1,16 @@
 interface User {
-  emails: UserEmails[];
+  email: string;
   firstName: string;
   fullName: string;
+  googleId?: string;
   id: string;
   isVerified: boolean;
   lastName: string;
   profile: Profile;
 }
-interface UserEmails {
-  email: string;
-  type: 'primary' | 'secondary' | 'pendingPrimary';
-  confirmed?: boolean;
-  isVisible?: boolean;
-}
+// interface UserEmail {
+//   email: string;
+//   type: 'primary' | 'secondary' | 'pendingPrimary';
+//   confirmed?: boolean;
+//   isVisible?: boolean;
+// }

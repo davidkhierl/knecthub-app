@@ -1,22 +1,22 @@
 import { AxiosError, AxiosResponse } from 'axios';
 
-import api from './api';
+import api from '@/services/api';
 import { useMutation } from 'react-query';
 
-export const getAuthLogout = () => api.get('/auth/logout');
+export const getAuthLogout = () => api.get('/auth/signout');
 
-export interface AuthPostRequest {
+interface PostAuthSignIn {
   email: string;
   password: string;
 }
 
-export const postAuthLogin = (request: AuthPostRequest) =>
-  api.post<StandardResponse<User>>('/auth/login', request);
+export const postAuthSignIn = (request: PostAuthSignIn) =>
+  api.post<StandardResponse<AuthSuccessResponse>>('/auth/signin', request);
 
-export function useAuthMutation() {
+export function useAuthSignInMutation() {
   return useMutation<
-    AxiosResponse<StandardResponse<User>>,
+    AxiosResponse<StandardResponse<AuthSuccessResponse>>,
     AxiosError<StandardErrorResponse>,
-    AuthPostRequest
-  >(postAuthLogin);
+    PostAuthSignIn
+  >(postAuthSignIn);
 }
