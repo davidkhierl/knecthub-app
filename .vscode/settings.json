@@ -1,5 +1,5 @@
 {
-  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "conventionalCommits.scopes": [
     "package",
     "Container",
@@ -10,5 +10,14 @@
     "RegisterForm",
     "UpdateUserForm",
     "EmailVerify"
+  ],
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "cSpell.ignoreWords": [
+    "svgr"
   ]
 }

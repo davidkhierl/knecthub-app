@@ -1,7 +1,7 @@
-import { ReactComponent as KnecthubLogoPrimary } from './logo-primary.svg';
-import { ReactComponent as KnecthubLogoWithTextPrimary } from './logo-with-text-primary.svg';
-import { ReactComponent as KnecthubLogoWithTextPrimaryDark } from './logo-with-text-primary-dark.svg';
-import { Link } from 'react-router-dom';
+import KnecthubLogoPrimary from './logo-primary.svg';
+import KnecthubLogoWithTextPrimary from './logo-with-text-primary.svg';
+import KnecthubLogoWithTextPrimaryDark from './logo-with-text-primary-dark.svg';
+import Link from 'next/link';
 import React from 'react';
 import { useColorMode } from '@chakra-ui/react';
 
@@ -10,12 +10,15 @@ interface KnecthubLogoProps {
   variant?: 'logo-with-text-primary' | 'logo-only-primary';
 }
 
-const KnecthubLogo: React.VFC<
-  KnecthubLogoProps &
-    React.SVGProps<SVGSVGElement> & {
-      title?: string | undefined;
-    }
-> = ({ to, variant, height = '32px', ...props }) => {
+const KnecthubLogo = ({
+  to,
+  variant,
+  height = '32px',
+  ...props
+}: KnecthubLogoProps &
+  React.SVGProps<SVGSVGElement> & {
+    title?: string | undefined;
+  }) => {
   const { colorMode } = useColorMode();
 
   const Logo = () => {
@@ -41,8 +44,10 @@ const KnecthubLogo: React.VFC<
 
   if (to)
     return (
-      <Link to={to}>
-        <Logo />
+      <Link href={to}>
+        <a>
+          <Logo />
+        </a>
       </Link>
     );
 

@@ -37,3 +37,9 @@ interface StandardResponse<T = any> {
    */
   success: boolean;
 }
+
+interface AuthSuccessResponse {
+  user: User;
+  accessToken: string;
+  refreshToken?: string;
+}

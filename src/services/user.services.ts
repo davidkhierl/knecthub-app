@@ -1,9 +1,9 @@
 import { AxiosError, AxiosResponse } from 'axios';
 
-import api from './api';
+import api from '@/services/api';
 import { useMutation } from 'react-query';
 
-export interface UserPostRequest {
+export interface PostUserRegister {
   company?: string;
   confirmPassword: string;
   email: string;
@@ -12,54 +12,70 @@ export interface UserPostRequest {
   password: string;
 }
 
-export type UserPostResponse = User;
-
 /**
  * User registration.
  * @param request UserPostRequest
  */
-export const postUser = (request: UserPostRequest) =>
-  api.post<StandardResponse<UserPostResponse>>('/users', request);
-
-/**
- * Current authenticated user.
- */
-export const getCurrentUser = () => api.get<StandardResponse<User>>('/users/me');
+export const postUserRegister = (request: PostUserRegister) =>
+  api.post<StandardResponse<AuthSuccessResponse>>('/users', request);
 
 /**
  * User post query mutation.
  */
-export function usePostUserMutation() {
+export function useUserRegisterMutation() {
   return useMutation<
-    AxiosResponse<StandardResponse<UserPostResponse>>,
+    AxiosResponse<StandardResponse<AuthSuccessResponse>>,
     AxiosError<StandardErrorResponse>,
-    UserPostRequest
-  >(postUser);
+    PostUserRegister
+  >(postUserRegister);
 }
 
-export interface UserPatchRequest {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-  confirmPassword?: string;
+export interface PostPasswordReset {
+  email: string;
 }
-
-export type UserPatchResponse = User;
-
-export const patchUser = (request: UserPatchRequest) =>
-  api.patch<StandardResponse<UserPatchResponse>>('/users/me', request);
 
 /**
- * User patch query mutation.
+ * Password reset request
+ * @param request PostPasswordReset
  */
-export function usePatchUserMutation() {
-  return useMutation<
-    AxiosResponse<StandardResponse<UserPatchResponse>>,
-    AxiosError<StandardErrorResponse>,
-    UserPatchRequest
-  >(patchUser);
+export const postPasswordReset = (request: PostPasswordReset) =>
+  api.post<StandardResponse>('/password/reset', request);
+
+// export function usePasswordResetRequestMutation() {
+//   return useMutation<
+//     AxiosResponse<StandardResponse>,
+//     AxiosError<StandardErrorResponse>,
+//     PostPasswordReset
+//   >(postPasswordReset);
+// }
+
+/**
+ * Verify password reset token
+ * @param token string
+ */
+export const getPasswordResetVerifyToken = (token: string) =>
+  api.get<StandardResponse>(`/password/reset?token=${token}`);
+
+export interface PatchPasswordReset {
+  password: string;
+  confirmPassword: string;
 }
 
-export const getUserSearch = (email: string) =>
-  api.get<StandardResponse<User>>(`/users/search?email=${email}`);
+/**
+ * Reset password
+ * @param token string
+ * @param request PathPasswordReset
+ */
+export const patchPasswordReset = (request: PatchPasswordReset, token: string) =>
+  api.patch<StandardResponse<AuthSuccessResponse>>(`/password/reset?token=${token}`, request);
+
+/**
+ * User password reset mutation
+ */
+export function usePasswordResetMutation(token: string) {
+  return useMutation<
+    AxiosResponse<StandardResponse<AuthSuccessResponse>>,
+    AxiosError<StandardErrorResponse>,
+    PatchPasswordReset
+  >((request) => patchPasswordReset(request, token));
+}
