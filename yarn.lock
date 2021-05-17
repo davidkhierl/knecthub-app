@@ -1230,6 +1230,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.1.5, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.6.3, @babel/runtime@npm:^7.8.7":
+  version: 7.14.0
+  resolution: "@babel/runtime@npm:7.14.0"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: ab6653f2f8ecdaebf36674894cef458a9d4f881dc007fdcd50a8261f5c6d9731e03fda2c17e32ecf0e6c779d69eb6cf49d68a48c780aaf07d5b572e8b7ef0508
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.12.13":
   version: 7.12.13
   resolution: "@babel/template@npm:7.12.13"
@@ -2458,6 +2467,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@popperjs/core@npm:^2.5.3":
+  version: 2.9.2
+  resolution: "@popperjs/core@npm:2.9.2"
+  checksum: cc4de8b46fc190805619224f1c683bee6a162276430af3728d35087099ad83a80da3c11c4eac7cb2b5aa2fa59d4c7c689e211a3e955136588ed6dedb5bff32c5
+  languageName: node
+  linkType: hard
+
 "@reach/alert@npm:0.13.2":
   version: 0.13.2
   resolution: "@reach/alert@npm:0.13.2"
@@ -2497,6 +2513,18 @@ __metadata:
     react: ^16.8.0 || 17.x
     react-dom: ^16.8.0 || 17.x
   checksum: 7367a8606979a0fbd437a4864f7cce80a3de91009fe6b7fae414a3be7a210267bddf1ae64600b2dda2c85069892968192482926591ca6ff8a1941a8f9ad5cda8
+  languageName: node
+  linkType: hard
+
+"@restart/hooks@npm:^0.3.25":
+  version: 0.3.26
+  resolution: "@restart/hooks@npm:0.3.26"
+  dependencies:
+    lodash: ^4.17.20
+    lodash-es: ^4.17.20
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 7aff79b16e3df69924ef2eed19370f2b929d2b0688e2c8f91a6625e9e38f6b12a5bf484e6186f5fd4032f201966a88ca64b71f05fd5d2159418bcd2325c95ffb
   languageName: node
   linkType: hard
 
@@ -2696,7 +2724,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17.0.5":
+"@types/react-big-calendar@npm:^0":
+  version: 0.31.0
+  resolution: "@types/react-big-calendar@npm:0.31.0"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/react": "*"
+  checksum: 3eb3878148d47d834fd242124b661de80678f4e5434905ee9e66e8747a8dc5330ef7d5b4b88b5ca8a7bf239ffcf4578926f03681e3ac30effd2abb64f73ffa6f
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*, @types/react@npm:>=16.9.11, @types/react@npm:^17.0.5":
   version: 17.0.5
   resolution: "@types/react@npm:17.0.5"
   dependencies:
@@ -3378,6 +3416,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clsx@npm:^1.0.4":
+  version: 1.1.1
+  resolution: "clsx@npm:1.1.1"
+  checksum: d8ae10ac0546da19fe8c9516886f6582a64a382cf4d09ea7d36d5287cafbdab1192ab249adc2cdf0310e0b0aeac4f4142cf7c738c98d9cb68c19ba24b6f673d5
+  languageName: node
+  linkType: hard
+
 "coa@npm:^2.0.2":
   version: 2.0.2
   resolution: "coa@npm:2.0.2"
@@ -3708,6 +3753,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"date-arithmetic@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "date-arithmetic@npm:4.1.0"
+  checksum: 4c3ed0125dec83033c720f9ac46bf956c1ba7d032aef5bd97411d120c6e2985006add94eaf37ba608ec23a0d57bd43e73d35fb5b0c9d485a0279d96b667c3ba5
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^2.21.3":
+  version: 2.21.3
+  resolution: "date-fns@npm:2.21.3"
+  checksum: a88c9da180cde3a3426c09cacf3f6bffb615e31d73e458da90e9d5304432eea2e0b360f40ee4fd5ca187659e8a7f8f667db902a3eb033e8d2d1522b1cc1b9e32
+  languageName: node
+  linkType: hard
+
 "debug@npm:2":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
@@ -3810,6 +3869,16 @@ __metadata:
     miller-rabin: ^4.0.0
     randombytes: ^2.0.0
   checksum: c988be315dc9ec83948605da58a25912daaae787d6a5cfa0b0574383dcf9b953aa81ba3109d06bc8590b037259753d2962a362e351efcb4274e94f1b0f277065
+  languageName: node
+  linkType: hard
+
+"dom-helpers@npm:^5.1.0, dom-helpers@npm:^5.2.0":
+  version: 5.2.1
+  resolution: "dom-helpers@npm:5.2.1"
+  dependencies:
+    "@babel/runtime": ^7.8.7
+    csstype: ^3.0.2
+  checksum: 4bbdac8dfd37ad689921af2c4d0027870108c673d458a0fc65b4350900c6195df2f872dd75c357755d197208b228e90c55619f75f9a9d337910e5050e83832af
   languageName: node
   linkType: hard
 
@@ -4930,7 +4999,9 @@ fsevents@~2.3.1:
     "@types/node": ^15.3.0
     "@types/nprogress": ^0.2.0
     "@types/react": ^17.0.5
+    "@types/react-big-calendar": ^0
     axios: ^0.21.1
+    date-fns: ^2.21.3
     framer-motion: ^4.1.16
     immer: ^9.0.2
     lottie-web: ^5.7.8
@@ -4938,6 +5009,7 @@ fsevents@~2.3.1:
     nprogress: ^0.2.0
     query-string: ^7.0.0
     react: ^17.0.2
+    react-big-calendar: ^0.33.3
     react-dom: ^17.0.2
     react-hook-form: ^7.6.0
     react-icons: ^4.2.0
@@ -4987,7 +5059,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"lodash-es@npm:^4.17.15":
+"lodash-es@npm:^4.17.11, lodash-es@npm:^4.17.15, lodash-es@npm:^4.17.20":
   version: 4.17.21
   resolution: "lodash-es@npm:4.17.21"
   checksum: ff0e7bb9595594d8b9c32fbe15912eaeefd83266f6e6872fbc498533cf8c2f039d12d37034b33965f1c04ef66ec1d6da83377c77e84e14c51a137901bb50865e
@@ -5015,7 +5087,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.13, lodash@npm:^4.17.20":
+"lodash@npm:^4.17.11, lodash@npm:^4.17.13, lodash@npm:^4.17.20":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 4983720b9abca930a4a46f18db163d7dad8dd00dbed6db0cc7b499b33b717cce69f80928b27bbb1ff2cbd3b19d251ee90669a8b5ea466072ca81c2ebe91e7468
@@ -5113,6 +5185,13 @@ fsevents@~2.3.1:
   version: 2.0.4
   resolution: "mdn-data@npm:2.0.4"
   checksum: bcecf9ae69505ff20a2913fa29849eec8b17fa7ab8c93e4bbec8020003f7fd9329478fc353e010ff0dbbca12fc296ff8cf40b6a5c93294c92df7dc8343880b99
+  languageName: node
+  linkType: hard
+
+"memoize-one@npm:^5.1.1":
+  version: 5.2.1
+  resolution: "memoize-one@npm:5.2.1"
+  checksum: 6b7dab7d8d9dca696d500dbc7f6b1445cbc4168d8208ee2746dd1a7f75378445d9bc6a2def7868afee81c87e630294456310f33f3f1eb738f69d748c797d87d5
   languageName: node
   linkType: hard
 
@@ -5960,6 +6039,28 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"react-big-calendar@npm:^0.33.3":
+  version: 0.33.3
+  resolution: "react-big-calendar@npm:0.33.3"
+  dependencies:
+    "@babel/runtime": ^7.1.5
+    clsx: ^1.0.4
+    date-arithmetic: ^4.1.0
+    dom-helpers: ^5.1.0
+    invariant: ^2.2.4
+    lodash: ^4.17.11
+    lodash-es: ^4.17.11
+    memoize-one: ^5.1.1
+    prop-types: ^15.7.2
+    react-overlays: ^4.1.1
+    uncontrollable: ^7.0.0
+  peerDependencies:
+    react: ^16.6.1 || ^17
+    react-dom: ^16.6.1 || ^17
+  checksum: ee2e202bce41934f3a13625180933500f67bbed504f384d46999fac806e79edac9e1ec309f92d1c0229947ed1c89a6e2fca0bae1ff221904424bba71d22270f9
+  languageName: node
+  linkType: hard
+
 "react-clientside-effect@npm:^1.2.2":
   version: 1.2.5
   resolution: "react-clientside-effect@npm:1.2.5"
@@ -6029,6 +6130,32 @@ fsevents@~2.3.1:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: 11bcf1267a314a522615f626f3ce3727a3a24cdbf61c4d452add3550a7875326669631326cfb1ba3e92b6f72244c32ffecf93ad21c0cad8455d3e169d0e3f060
+  languageName: node
+  linkType: hard
+
+"react-lifecycles-compat@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "react-lifecycles-compat@npm:3.0.4"
+  checksum: 82176a55ef7526414d770d5e07dc1d28b4c7f20281f22c6f53f3a98df9dbbb5d70c94bebee57b4ea8ccc2eee430b907ca7b564a42fbdd0ed21e7c43bfee35404
+  languageName: node
+  linkType: hard
+
+"react-overlays@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "react-overlays@npm:4.1.1"
+  dependencies:
+    "@babel/runtime": ^7.12.1
+    "@popperjs/core": ^2.5.3
+    "@restart/hooks": ^0.3.25
+    "@types/warning": ^3.0.0
+    dom-helpers: ^5.2.0
+    prop-types: ^15.7.2
+    uncontrollable: ^7.0.0
+    warning: ^4.0.3
+  peerDependencies:
+    react: ">=16.3.0"
+    react-dom: ">=16.3.0"
+  checksum: 1d0f6c54585c89915ce5f934b223847a78f76b4c7d3027fb5d0b037e9e00a8e0873b9c51d3ef957ca22328e696be60b91f2aeebcb8fa0e6bd2008703fe37cd6a
   languageName: node
   linkType: hard
 
@@ -6969,6 +7096,20 @@ typescript@^4.2.4:
     has-symbols: ^1.0.2
     which-boxed-primitive: ^1.0.2
   checksum: aa944f1ecfec638b841b331383d0b80edc40855271ecc213c1aa736096d8d0b39ba25b64d102f56c597521db9cd3f0ddbcb97a0f760c240ab584e94e457518c1
+  languageName: node
+  linkType: hard
+
+"uncontrollable@npm:^7.0.0":
+  version: 7.2.1
+  resolution: "uncontrollable@npm:7.2.1"
+  dependencies:
+    "@babel/runtime": ^7.6.3
+    "@types/react": ">=16.9.11"
+    invariant: ^2.2.4
+    react-lifecycles-compat: ^3.0.4
+  peerDependencies:
+    react: ">=15.0.0"
+  checksum: 13d0eb20a7e14532c0983d5803b9e81dc9e1d0f2cf9fdc2df5c5cf36e1742a9928ec82837b46c3047a378c8cb96963bcdc0255836d70fc9be04152e6fcb85247
   languageName: node
   linkType: hard
 

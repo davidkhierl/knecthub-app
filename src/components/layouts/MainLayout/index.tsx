@@ -1,6 +1,5 @@
-import { Box, Container, Flex, Input, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
 
-import Link from 'next/link';
 import React from 'react';
 import Sidebar from './Sidebar';
 

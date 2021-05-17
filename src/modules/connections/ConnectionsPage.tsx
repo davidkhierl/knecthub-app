@@ -1,8 +1,12 @@
+import { Button, Center, Heading, VStack } from '@chakra-ui/react';
+
 import Head from 'next/head';
+import { HiPlus } from 'react-icons/hi';
 import MainLayout from '@/components/layouts/MainLayout';
 import { PageWithLayout } from '@/typings/page';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import React from 'react';
+import UndrawConnected from '@/assets/img/undraw_connected.svg';
 
 const ConnectionsPage: PageWithLayout = () => {
   return (
@@ -10,8 +14,15 @@ const ConnectionsPage: PageWithLayout = () => {
       <Head>
         <title>Connections | Knecthub</title>
       </Head>
-
-      <h1>Connection Page</h1>
+      <Center h='full'>
+        <VStack spacing={8}>
+          <Heading>Grow your network!</Heading>
+          <UndrawConnected width='300px' />
+          <Button size='lg' colorScheme='blue' leftIcon={<HiPlus />}>
+            Add Connection
+          </Button>
+        </VStack>
+      </Center>
     </>
   );
 };
