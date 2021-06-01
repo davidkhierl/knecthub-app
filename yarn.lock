@@ -2378,12 +2378,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:^2.5.1":
-  version: 2.5.1
-  resolution: "@hookform/resolvers@npm:2.5.1"
+"@hookform/resolvers@npm:^2.5.2":
+  version: 2.5.2
+  resolution: "@hookform/resolvers@npm:2.5.2"
   peerDependencies:
     react-hook-form: ^7.0.0
-  checksum: 6056ff42b02e8c8e6e4178d4a3e1e3158c9dc2de7458e5e6225c38238301b81454283b2e22cf1ca28e468dfbfd5a7656fcd2c5bed7d0f812ac22b2d20d00b8f0
+  checksum: 0eb63ba54dbc61ede066066ac15e63066b3a6589e9c7f88d23d0bb4b8e0fe768414eef3ec132e9cdad5e18ac0f70c655c3561fd59cad1bf69449484be6e731d8
   languageName: node
   linkType: hard
 
@@ -3772,10 +3772,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.21.3":
-  version: 2.21.3
-  resolution: "date-fns@npm:2.21.3"
-  checksum: a88c9da180cde3a3426c09cacf3f6bffb615e31d73e458da90e9d5304432eea2e0b360f40ee4fd5ca187659e8a7f8f667db902a3eb033e8d2d1522b1cc1b9e32
+"date-fns@npm:^2.22.1":
+  version: 2.22.1
+  resolution: "date-fns@npm:2.22.1"
+  checksum: a89dc6cdf3929b3f0d54d129a3c288df995fc3e6c8099dacc215e5404b4950fc8551d11a58968dfd3b8d576d0c5e637072f615e8f9c3e47d82c81e3952007d5b
   languageName: node
   linkType: hard
 
@@ -5006,24 +5006,24 @@ fsevents@~2.3.1:
     "@chakra-ui/theme-tools": ^1.1.7
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    "@hookform/resolvers": ^2.5.1
+    "@hookform/resolvers": ^2.5.2
     "@svgr/webpack": ^5.5.0
     "@types/node": ^15.6.1
     "@types/nprogress": ^0.2.0
     "@types/react": ^17.0.8
     "@types/react-big-calendar": ^0.31.0
     axios: ^0.21.1
-    date-fns: ^2.21.3
+    date-fns: ^2.22.1
     framer-motion: ^4.1.17
     immer: ^9.0.2
-    lottie-web: ^5.7.8
+    lottie-web: ^5.7.9
     next: ^10.2.3
     nprogress: ^0.2.0
     query-string: ^7.0.0
     react: ^17.0.2
-    react-big-calendar: ^0.33.4
+    react-big-calendar: ^0.33.5
     react-dom: ^17.0.2
-    react-hook-form: ^7.6.7
+    react-hook-form: ^7.7.1
     react-icons: ^4.2.0
     react-query: ^3.16.0
     sass: ^1.34.0
@@ -5117,10 +5117,10 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"lottie-web@npm:^5.7.8":
-  version: 5.7.8
-  resolution: "lottie-web@npm:5.7.8"
-  checksum: 62ba073beafc83135a3ff753846b328a23d712b5b012a4ab3d9fe0817decce3e73d5d22d416646187989888c08e0adc34f4350721edf7e360752dd4c3eb2a3fd
+"lottie-web@npm:^5.7.9":
+  version: 5.7.9
+  resolution: "lottie-web@npm:5.7.9"
+  checksum: 60fcc9bd5e17c65374f8e5d5d41ff8b40d5e53f2c7158210298497aa0c580be80ab2b23f9737a196e1ec7662ae49a9792c028d967e218d5cb542d8ca4487b706
   languageName: node
   linkType: hard
 
@@ -6051,9 +6051,9 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"react-big-calendar@npm:^0.33.4":
-  version: 0.33.4
-  resolution: "react-big-calendar@npm:0.33.4"
+"react-big-calendar@npm:^0.33.5":
+  version: 0.33.5
+  resolution: "react-big-calendar@npm:0.33.5"
   dependencies:
     "@babel/runtime": ^7.1.5
     clsx: ^1.0.4
@@ -6069,7 +6069,7 @@ fsevents@~2.3.1:
   peerDependencies:
     react: ^16.6.1 || ^17
     react-dom: ^16.6.1 || ^17
-  checksum: 5c6059af2db85b07db4f3eeb74dbe8985b57fb8963f9bb516b678b2f69c2cdf1a74872db215c7595e19f2eb4fa3470abc8476dfd6b4c90ed81e46eacd8b5046e
+  checksum: ce65dc087e34d8d33785b833d9086320f45ee12cb0a6e199e2f3f3b0c3cc70383b0ca2f4cf26f6240d422b82e501651dbc3f699bcba9dda894dbd9ffac38c847
   languageName: node
   linkType: hard
 
@@ -6120,12 +6120,12 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.6.7":
-  version: 7.6.7
-  resolution: "react-hook-form@npm:7.6.7"
+"react-hook-form@npm:^7.7.1":
+  version: 7.7.1
+  resolution: "react-hook-form@npm:7.7.1"
   peerDependencies:
     react: ^16.8.0 || ^17
-  checksum: 48778e5b943f99b646b20654226a9edfb976a55e6bf80477fac8420f2f7f48f780882d9a3b6fc774327601cfd370473d460c97c2fc825399e30b190e42831b4d
+  checksum: 91d1160dbb9c1609e086fd97d6f2af68024a42eff3609cbc0df564bfcc01ee3cdd2fb8a391bfd5298010b2c1b3b8e34603683e3f96cfc3c3cbe0391c19e7dd96
   languageName: node
   linkType: hard
 
