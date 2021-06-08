@@ -3,6 +3,7 @@ import KnecthubLogoWithTextPrimary from './logo-with-text-primary.svg';
 import KnecthubLogoWithTextPrimaryDark from './logo-with-text-primary-dark.svg';
 import Link from 'next/link';
 import React from 'react';
+import { chakra } from '@chakra-ui/react';
 import { useColorMode } from '@chakra-ui/react';
 
 interface KnecthubLogoProps {
@@ -54,4 +55,4 @@ const KnecthubLogo = ({
   return <Logo />;
 };
 
-export default KnecthubLogo;
+export default chakra(KnecthubLogo);

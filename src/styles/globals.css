@@ -2,5 +2,7 @@ html,
 body,
 body > div:first-child,
 div#__next {
-  height: 100%;
+  display: unset;
+  min-height: unset;
+  flex-direction: unset;
 }

@@ -20,13 +20,25 @@ const SidebarMenuItem = forwardRef<SidebarMenuItemProps, 'button'>(({ href, ...p
           isFullWidth
           justifyContent='start'
           as='a'
+          fontSize='sm'
+          fontWeight='normal'
           ref={ref}
           {...props}
         />
       </Link>
     );
 
-  return <Button variant='ghost' isFullWidth justifyContent='start' ref={ref} {...props} />;
+  return (
+    <Button
+      variant='ghost'
+      isFullWidth
+      justifyContent='start'
+      fontSize='sm'
+      fontWeight='normal'
+      ref={ref}
+      {...props}
+    />
+  );
 });
 
 export default SidebarMenuItem;

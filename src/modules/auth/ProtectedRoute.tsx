@@ -8,16 +8,16 @@ import { useRouter } from 'next/router';
 
 export interface AuthenticatedRouteProps {
   children?: React.ReactNode;
-  redirect: string;
   forNonAuthenticatedUserOnly?: boolean;
+  redirect: string;
 }
 
 const ProtectedRoute = (props: AuthenticatedRouteProps) => {
-  const router = useRouter();
-
   const { redirect } = queryString.parse(!isServer ? window.location.search : '') as {
     redirect: string;
   };
+
+  const authenticated = useAuthStore((state) => state.authenticated);
 
   const isLoading = useAuthStore((state) => state.isLoading);
 
@@ -25,32 +25,33 @@ const ProtectedRoute = (props: AuthenticatedRouteProps) => {
 
   const loadSignedUser = useAuthStore((state) => state.loadSignedUser);
 
+  const router = useRouter();
+
   const user = useAuthStore((state) => state.user);
 
-  const authenticated = useAuthStore((state) => state.authenticated);
-
   useEffect(() => {
+    // Try to load signed user on initial load.
     if (!authenticated) loadSignedUser();
   }, []);
 
   useEffect(() => {
-    // for non authenticated user only, eg: login, register, password reset.
+    // For non authenticated user only, eg: login, register, password reset.
     if (!isLoading && authenticated && user && props.forNonAuthenticatedUserOnly)
       router.push(redirect ?? props.redirect);
 
-    // for authenticated user.
+    // For authenticated user.
     if (!isLoading && !authenticated && !user && !props.forNonAuthenticatedUserOnly)
       router.push(props.redirect ?? '/signin');
   }, [isLoading, authenticated, props.forNonAuthenticatedUserOnly]);
 
-  // console.log('auth render');
-
+  // Display spinner while checking authentication.
   if (props.forNonAuthenticatedUserOnly) {
     if ((authenticated && user && !isLoading) || isSilentLoadingUser) return <KnecthubSpinner />;
   } else {
     if (isLoading || !authenticated || !user) return <KnecthubSpinner />;
   }
 
+  // Finally returns children.
   return <>{props.children}</>;
 };
 

@@ -16,47 +16,50 @@ import KnecthubLogo from '@/components/common/KnecthubLogo';
 import Menu from './SidebarMenu';
 import MenuItem from './SidebarMenuItem';
 import React from 'react';
+import Scrollbars from '@/components/chakra-factory/Scrollbars';
 import UserMenu from '@/components/common/UserMenu';
 
 const Sidebar = forwardRef<BoxProps, 'div'>((props, ref) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Box as='aside' ref={ref} {...props}>
+    <Box as='aside' ref={ref} overflow='auto' {...props}>
       <Flex direction='column' h='full' p={4}>
-        <KnecthubLogo />
+        <KnecthubLogo flexShrink={0} />
         <UserMenu mt={4} />
-        <Menu mt={8}>
-          <MenuItem href='/' leftIcon={<HiHome />}>
-            Home
-          </MenuItem>
-          <MenuItem href='/connections' leftIcon={<HiUserGroup />}>
-            Connections
-          </MenuItem>
-          <MenuItem href='/schedules' leftIcon={<HiCalendar />}>
-            Schedules
-          </MenuItem>
-        </Menu>
-        <Menu mt={8} title='Events'>
-          <Button colorScheme='green' isFullWidth rightIcon={<HiPlus />}>
-            Create Event
-          </Button>
-          <MenuItem href='/discover' leftIcon={<HiSearch />}>
-            Discover
-          </MenuItem>
-          <MenuItem href='/my-events' leftIcon={<HiStar />}>
-            My Events
-          </MenuItem>
-        </Menu>
-        <Menu mt='auto'>
+        <Scrollbars autoHide minHeight='16'>
+          <Menu mt={8}>
+            <MenuItem href='/' leftIcon={<HiHome size={18} />}>
+              Home
+            </MenuItem>
+            <MenuItem href='/connections' leftIcon={<HiUserGroup size={18} />}>
+              Connections
+            </MenuItem>
+            <MenuItem href='/schedules' leftIcon={<HiCalendar size={18} />}>
+              Schedules
+            </MenuItem>
+          </Menu>
+          <Menu mt={8} title='Events'>
+            <Button colorScheme='green' isFullWidth rightIcon={<HiPlus size={20} />}>
+              Create Event
+            </Button>
+            <MenuItem href='/discover' leftIcon={<HiSearch size={18} />}>
+              Discover
+            </MenuItem>
+            <MenuItem href='/my-events' leftIcon={<HiStar size={18} />}>
+              My Events
+            </MenuItem>
+          </Menu>
+        </Scrollbars>
+        <Menu>
           <MenuItem
-            leftIcon={colorMode === 'light' ? <IoMoon /> : <ImSun />}
+            leftIcon={colorMode === 'light' ? <IoMoon size={18} /> : <ImSun size={18} />}
             onClick={toggleColorMode}>
             Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
           </MenuItem>
-          <MenuItem href='/settings' leftIcon={<BiCog />}>
+          <MenuItem href='/settings' leftIcon={<BiCog size={18} />}>
             Settings
           </MenuItem>
-          <MenuItem leftIcon={<HiOutlineSupport />}>Help &amp; Support</MenuItem>
+          <MenuItem leftIcon={<HiOutlineSupport size={18} />}>Help &amp; Support</MenuItem>
         </Menu>
       </Flex>
     </Box>
