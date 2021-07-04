@@ -54,7 +54,9 @@ const SignInWithCredentialsForm = () => {
         authSuccess(res.data.data.user);
       },
       onError: (res) => {
-        authFailed(res.response?.data);
+        if (res.isAxiosError)
+          if (res.response) authFailed(res.response.data);
+          else authFailed({ message: res.message, success: false, errors: [] });
       }
     });
   });
