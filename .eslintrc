@@ -1,6 +1,11 @@
 {
   "extends": ["next", "next/core-web-vitals", "prettier"],
-  "rules": {
-    "react/display-name": "off"
-  }
+  "overrides": [
+    {
+      "files": ["src/modules/*/**"],
+      "rules": {
+        "react/display-name": "off"
+      }
+    }
+  ]
 }
