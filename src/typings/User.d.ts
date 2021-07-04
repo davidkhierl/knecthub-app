@@ -8,6 +8,7 @@ interface User {
   lastName: string;
   profile: Profile;
 }
+
 // interface UserEmail {
 //   email: string;
 //   type: 'primary' | 'secondary' | 'pendingPrimary';

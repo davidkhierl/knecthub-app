@@ -5,4 +5,5 @@ div#__next {
   display: unset;
   min-height: unset;
   flex-direction: unset;
+  height: 100%;
 }

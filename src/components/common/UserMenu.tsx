@@ -25,7 +25,7 @@ const UserMenu = forwardRef<MenuButtonProps, 'button'>((props, ref) => {
       <MenuButton
         as={Button}
         h='unset'
-        py={4}
+        py={2}
         textAlign='left'
         rightIcon={<HiOutlineSelector />}
         ref={ref}

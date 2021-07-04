@@ -19,5 +19,6 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.ignoreWords": [
     "svgr"
-  ]
+  ],
+  "eslint.nodePath": ".yarn/sdks"
 }

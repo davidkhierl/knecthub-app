@@ -82,7 +82,7 @@ const PasswordResetRequestForm = () => {
             <AlertDescription>{message}</AlertDescription>
           </Box>
         </Alert>
-        <Link href='/signin'>
+        <Link href='/signin' passHref>
           <Button as='a'>Done</Button>
         </Link>
       </Grid>

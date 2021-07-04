@@ -1,7 +1,11 @@
-module.exports = {
-  future: {
-    webpack5: true
-  },
+// @ts-check
+
+/**
+ * @type {import('next/dist/next-server/server/config').NextConfig}
+ **/
+const nextConfig = {
+  experimental: {},
+  future: {},
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -10,4 +14,6 @@ module.exports = {
 
     return config;
   }
-};
+}
+
+module.exports = nextConfig

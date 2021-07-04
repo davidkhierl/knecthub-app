@@ -15,14 +15,14 @@ const SidebarMenuItem = forwardRef<SidebarMenuItemProps, 'button'>(({ href, ...p
     return (
       <Link href={href} passHref>
         <Button
-          isActive={router.pathname === href}
-          variant='ghost'
-          isFullWidth
-          justifyContent='start'
           as='a'
           fontSize='sm'
           fontWeight='normal'
+          isActive={router.pathname === href}
+          isFullWidth
+          justifyContent='start'
           ref={ref}
+          variant='ghost'
           {...props}
         />
       </Link>
@@ -30,12 +30,12 @@ const SidebarMenuItem = forwardRef<SidebarMenuItemProps, 'button'>(({ href, ...p
 
   return (
     <Button
-      variant='ghost'
-      isFullWidth
-      justifyContent='start'
       fontSize='sm'
       fontWeight='normal'
+      isFullWidth
+      justifyContent='start'
       ref={ref}
+      variant='ghost'
       {...props}
     />
   );

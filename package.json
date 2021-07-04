@@ -19,9 +19,8 @@
     "query-string": "^7.0.1",
     "react": "^17.0.2",
     "react-big-calendar": "^0.33.5",
-    "react-custom-scrollbars-2": "^4.4.0",
     "react-dom": "^17.0.2",
-    "react-hook-form": "^7.9.0",
+    "react-hook-form": "^7.10.0",
     "react-icons": "^4.2.0",
     "react-query": "^3.18.1",
     "sass": "^1.35.1",
@@ -30,15 +29,20 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",
-    "@types/node": "^14",
+    "@types/eslint": "^7.2.13",
+    "@types/node": "^14.17.4",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.13",
     "@types/react-big-calendar": "^0.31.3",
-    "typescript": "4.2.4"
+    "eslint": "^7.30.0",
+    "eslint-config-next": "^11.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "typescript": "4.3.5"
   },
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "lint": "next lint",
     "start": "next start"
   }
 }

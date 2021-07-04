@@ -1,7 +1,6 @@
 import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
 
 import React from 'react';
-import Scrollbars from '@/components/chakra-factory/Scrollbars';
 import Sidebar from './Sidebar';
 
 export interface MainLayoutProps {
@@ -15,14 +14,16 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         <Sidebar />
         <Box as='main' flex={1} p={4}>
           <Box
-            rounded='lg'
-            p={4}
-            h='full'
             bg={useColorModeValue('white', 'gray.700')}
-            shadow='lg'
             border={useColorModeValue('1px', 'none')}
-            borderColor='gray.50'>
-            <Scrollbars>{children}</Scrollbars>
+            borderColor='gray.50'
+            h='full'
+            overflow='auto'
+            p={4}
+            rounded='lg'
+            shadow='lg'
+            >
+              {children}
           </Box>
         </Box>
       </Flex>

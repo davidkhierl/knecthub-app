@@ -8,15 +8,16 @@ export interface SidebarMenuProps extends StackProps {
 
 const SidebarMenu = forwardRef<SidebarMenuProps, 'nav'>(({ title, children, ...props }, ref) => {
   return (
-    <VStack spacing={1} ref={ref} as='nav' {...props}>
+    <VStack spacing={2} ref={ref} as='nav' {...props}>
       {title && (
         <Text
-          mr='auto'
-          mb={2}
           casing='uppercase'
-          fontWeight='medium'
+          color='gray.500'
           fontSize='sm'
-          color='gray.500'>
+          fontWeight='medium'
+          mb={2}
+          mr='auto'
+          >
           {title}
         </Text>
       )}

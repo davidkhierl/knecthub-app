@@ -16,17 +16,17 @@ import KnecthubLogo from '@/components/common/KnecthubLogo';
 import Menu from './SidebarMenu';
 import MenuItem from './SidebarMenuItem';
 import React from 'react';
-import Scrollbars from '@/components/chakra-factory/Scrollbars';
 import UserMenu from '@/components/common/UserMenu';
 
 const Sidebar = forwardRef<BoxProps, 'div'>((props, ref) => {
   const { colorMode, toggleColorMode } = useColorMode();
+  
   return (
     <Box as='aside' ref={ref} overflow='auto' {...props}>
       <Flex direction='column' h='full' p={4}>
         <KnecthubLogo flexShrink={0} />
         <UserMenu mt={4} />
-        <Scrollbars autoHide minHeight='16'>
+        <Box h='full'>
           <Menu mt={8}>
             <MenuItem href='/' leftIcon={<HiHome size={18} />}>
               Home
@@ -49,7 +49,7 @@ const Sidebar = forwardRef<BoxProps, 'div'>((props, ref) => {
               My Events
             </MenuItem>
           </Menu>
-        </Scrollbars>
+        </Box>
         <Menu>
           <MenuItem
             leftIcon={colorMode === 'light' ? <IoMoon size={18} /> : <ImSun size={18} />}
