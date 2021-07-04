@@ -38,6 +38,7 @@ const SignInPage: PageWithLayout = () => {
           href={`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google?redirect=test`}>
           Sign in with Google
         </Button>
+        {/* TODO: Temporary hide disabled signin options. */}
         <Button variant='outline' leftIcon={<ImFacebook color='#4267B2' />} disabled>
           Sign in with Facebook
         </Button>
