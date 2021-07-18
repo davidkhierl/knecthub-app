@@ -1,6 +1,7 @@
 import { Styles, createBreakpoints, mode } from '@chakra-ui/theme-tools';
 import { ThemeConfig, extendTheme } from '@chakra-ui/react';
 
+import Button from './button';
 import Card from './card';
 
 const breakpoints = createBreakpoints({
@@ -14,16 +15,16 @@ const breakpoints = createBreakpoints({
 const colors = {
   knectBg: '#272D4E',
   gray: {
-    50: '#f7fafc',
-    100: '#edf2f7',
-    200: '#e2e8f0',
-    300: '#cbd5e0',
-    400: '#7082a7',
-    500: '#56688d',
-    600: '#43516f',
-    700: '#252e41',
-    800: '#1c2331',
-    900: '#050c15'
+    50: '#f1f2f3',
+    100: '#d9d9d9',
+    200: '#bebebe',
+    300: '#a5a5a5',
+    400: '#8a8b8b',
+    500: '#717273',
+    600: '#585858',
+    700: '#3f3f3f',
+    800: '#262626',
+    900: '#0c0d0e'
   },
   yellow: {
     50: '#fff5dd',
@@ -73,7 +74,7 @@ const styles: Styles = {};
 const theme = extendTheme({
   breakpoints,
   colors,
-  components: { Card },
+  components: { Button, Card },
   config,
   styles
 });

@@ -8,10 +8,15 @@ import {
   MenuItem,
   MenuList,
   Text,
-  forwardRef
+  forwardRef,
+  useColorMode
 } from '@chakra-ui/react';
+import { HiLogout, HiOutlineSupport } from 'react-icons/hi';
 
+import { BiCog } from 'react-icons/bi';
 import { HiOutlineSelector } from 'react-icons/hi';
+import { ImSun } from 'react-icons/im';
+import { IoMoon } from 'react-icons/io5';
 import React from 'react';
 import useAuthStore from '@/store/useAuthStore';
 
@@ -19,6 +24,8 @@ const UserMenu = forwardRef<MenuButtonProps, 'button'>((props, ref) => {
   const user = useAuthStore((state) => state.user);
 
   const signOut = useAuthStore((state) => state.signOut);
+
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <Menu>
@@ -28,6 +35,8 @@ const UserMenu = forwardRef<MenuButtonProps, 'button'>((props, ref) => {
         py={2}
         textAlign='left'
         rightIcon={<HiOutlineSelector />}
+        colorScheme='cyan'
+        variant='sidebar-menu-item'
         ref={ref}
         {...props}>
         <Flex>
@@ -45,8 +54,17 @@ const UserMenu = forwardRef<MenuButtonProps, 'button'>((props, ref) => {
           </Flex>
         </Flex>
       </MenuButton>
-      <MenuList p={2}>
-        <MenuItem rounded='md' onClick={signOut}>
+      <MenuList>
+        <MenuItem
+          icon={colorMode === 'light' ? <IoMoon size={18} /> : <ImSun size={18} />}
+          onClick={toggleColorMode}>
+          Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+        </MenuItem>
+        <MenuItem href='/settings' icon={<BiCog size={18} />}>
+          Settings
+        </MenuItem>
+        <MenuItem icon={<HiOutlineSupport size={18} />}>Help &amp; Support</MenuItem>
+        <MenuItem icon={<HiLogout size={18} />} onClick={signOut}>
           Sign out
         </MenuItem>
       </MenuList>

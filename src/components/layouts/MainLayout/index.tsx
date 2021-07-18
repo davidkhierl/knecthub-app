@@ -11,7 +11,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <Box id='main-layout' height='100vh' overflow='hidden' position='relative'>
       <Flex height='full'>
-        <Sidebar />
+        <Sidebar maxW='280px' />
         <Box as='main' flex={1} p={4}>
           <Box
             bg={useColorModeValue('white', 'gray.700')}
@@ -21,9 +21,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
             overflow='auto'
             p={4}
             rounded='lg'
-            shadow='lg'
-            >
-              {children}
+            shadow='lg'>
+            {children}
           </Box>
         </Box>
       </Flex>

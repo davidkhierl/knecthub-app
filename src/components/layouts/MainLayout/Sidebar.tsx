@@ -1,31 +1,37 @@
-import { Box, BoxProps, Button, Flex, forwardRef, useColorMode } from '@chakra-ui/react';
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Box,
+  BoxProps,
+  Button,
+  Flex,
+  forwardRef,
+} from '@chakra-ui/react';
 import {
   HiCalendar,
   HiHome,
-  HiOutlineSupport,
   HiPlus,
   HiSearch,
   HiStar,
   HiUserGroup
 } from 'react-icons/hi';
 
-import { BiCog } from 'react-icons/bi';
-import { ImSun } from 'react-icons/im';
-import { IoMoon } from 'react-icons/io5';
 import KnecthubLogo from '@/components/common/KnecthubLogo';
 import Menu from './SidebarMenu';
 import MenuItem from './SidebarMenuItem';
 import React from 'react';
 import UserMenu from '@/components/common/UserMenu';
+import useAuthStore from '@/store/useAuthStore';
 
 const Sidebar = forwardRef<BoxProps, 'div'>((props, ref) => {
-  const { colorMode, toggleColorMode } = useColorMode();
-  
+  const user = useAuthStore((state) => state.user);
+
   return (
     <Box as='aside' ref={ref} overflow='auto' {...props}>
       <Flex direction='column' h='full' p={4}>
         <KnecthubLogo flexShrink={0} />
-        <UserMenu mt={4} />
         <Box h='full'>
           <Menu mt={8}>
             <MenuItem href='/' leftIcon={<HiHome size={18} />}>
@@ -50,16 +56,19 @@ const Sidebar = forwardRef<BoxProps, 'div'>((props, ref) => {
             </MenuItem>
           </Menu>
         </Box>
+        {!user?.emailVerified && (
+          <Alert status='warning' my={4} flexShrink={0} rounded='md'>
+            <AlertIcon />
+            <Box flex='1'>
+              <AlertTitle>Unverified Account</AlertTitle>
+              <AlertDescription>
+                Please check your email or click here to resend verification link.
+              </AlertDescription>
+            </Box>
+          </Alert>
+        )}
         <Menu>
-          <MenuItem
-            leftIcon={colorMode === 'light' ? <IoMoon size={18} /> : <ImSun size={18} />}
-            onClick={toggleColorMode}>
-            Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
-          </MenuItem>
-          <MenuItem href='/settings' leftIcon={<BiCog size={18} />}>
-            Settings
-          </MenuItem>
-          <MenuItem leftIcon={<HiOutlineSupport size={18} />}>Help &amp; Support</MenuItem>
+          <UserMenu />
         </Menu>
       </Flex>
     </Box>

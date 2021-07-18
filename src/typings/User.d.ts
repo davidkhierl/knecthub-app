@@ -4,7 +4,7 @@ interface User {
   fullName: string;
   googleId?: string;
   id: string;
-  isVerified: boolean;
+  emailVerified: boolean;
   lastName: string;
   profile: Profile;
 }
