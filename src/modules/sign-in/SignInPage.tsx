@@ -1,5 +1,4 @@
 import { Button, Center, Divider, Flex, Grid, Link, Text } from '@chakra-ui/react';
-import { ImFacebook, ImLinkedin2, ImTwitter } from 'react-icons/im';
 
 import CardBoxLayout from '@/components/layouts/CardBoxLayout';
 import { FcGoogle } from 'react-icons/fc';
@@ -10,6 +9,8 @@ import ProtectedRoute from '@/modules/auth/ProtectedRoute';
 import React from 'react';
 import SignInWithCredentialsForm from '@/components/forms/SignInWithCredentialsForm';
 import useAuthStore from '@/store/useAuthStore';
+
+// import { ImFacebook, ImLinkedin2, ImTwitter } from 'react-icons/im';
 
 const SignInPage: PageWithLayout = () => {
   const error = useAuthStore((state) => state.error);
@@ -39,7 +40,7 @@ const SignInPage: PageWithLayout = () => {
           Sign in with Google
         </Button>
         {/* TODO: Temporary hide disabled signin options. */}
-        <Button variant='outline' leftIcon={<ImFacebook color='#4267B2' />} disabled>
+        {/* <Button variant='outline' leftIcon={<ImFacebook color='#4267B2' />} disabled>
           Sign in with Facebook
         </Button>
         <Button variant='outline' leftIcon={<ImTwitter color='#1DA1F2' />} disabled>
@@ -47,7 +48,7 @@ const SignInPage: PageWithLayout = () => {
         </Button>
         <Button variant='outline' leftIcon={<ImLinkedin2 color='#2867B2' />} disabled>
           Sign in with LinkedIn
-        </Button>
+        </Button> */}
       </Grid>
       <Flex mx='auto' my={4} justifyContent='center' alignItems='center'>
         <Divider orientation='horizontal' w='80px' />
