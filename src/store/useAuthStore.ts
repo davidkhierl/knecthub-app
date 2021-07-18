@@ -32,6 +32,10 @@ export type AuthStore = {
    */
   loadSignedUser: () => void;
   /**
+   * Set error object.
+   */
+  setError: (error?: StandardErrorResponse) => void
+  /**
    * Sets authentication `isLoading` state.
    */
   setIsLoading: (loading: boolean) => void;
@@ -58,22 +62,33 @@ export type AuthStore = {
  */
 const useAuthStore = create<AuthStore>((set) => ({
   authenticated: false,
+  authFailed: error => {
+    set({
+      user: null,
+      authenticated: false,
+      isLoading: false,
+      error
+    });
+  },
+  authSuccess: user => {
+    localStorage.setItem('pre-fetch-user', 'true');
+    set({
+      user,
+      authenticated: true,
+      isLoading: false,
+      error: undefined
+    });
+  },
   error: undefined,
   isLoading: hasSignedUser,
   isSilentLoadingUser: false,
-  setIsLoading: (loading) => {
-    set({ isLoading: loading });
-  },
-  setIsSilentLoadingUser: (loading) => {
-    set({ isSilentLoadingUser: loading });
-  },
   loadSignedUser: async () => {
     if (hasSignedUser) {
       try {
-        set({ isSilentLoadingUser: true });
-
+        set({
+          isSilentLoadingUser: true
+        });
         const res = await api.get<StandardResponse<User>>('users/me');
-
         set({
           user: res.data.data,
           isLoading: false,
@@ -83,34 +98,52 @@ const useAuthStore = create<AuthStore>((set) => ({
         });
       } catch (error) {
         localStorage.removeItem('pre-fetch-user');
-
-        set({ user: null, isLoading: false, isSilentLoadingUser: false, authenticated: false });
+        set({
+          user: null,
+          isLoading: false,
+          isSilentLoadingUser: false,
+          authenticated: false
+        });
       }
     }
   },
-  authSuccess: (user) => {
-    localStorage.setItem('pre-fetch-user', 'true');
-
-    set({ user, authenticated: true, isLoading: false, error: undefined });
+  setError: error => {
+    set({
+      error
+    });
   },
-  authFailed: (error) => {
-    set({ user: null, authenticated: false, isLoading: false, error });
+  setIsLoading: loading => {
+    set({
+      isLoading: loading
+    });
   },
+  setIsSilentLoadingUser: loading => {
+    set({
+      isSilentLoadingUser: loading
+    });
+  },
+  setUser: user => set({
+    user
+  }),
   signOut: async () => {
     try {
       localStorage.removeItem('pre-fetch-user');
-
       await api.get<StandardResponse>('auth/signout');
-
-      set({ user: null, isLoading: false, authenticated: false });
+      set({
+        user: null,
+        isLoading: false,
+        authenticated: false
+      });
     } catch (error) {
       localStorage.removeItem('pre-fetch-user');
-
-      set({ user: null, isLoading: false, authenticated: false });
+      set({
+        user: null,
+        isLoading: false,
+        authenticated: false
+      });
     }
   },
-  user: null,
-  setUser: (user) => set({ user })
+  user: null
 }));
 
 export default useAuthStore;

@@ -10,8 +10,8 @@ import {
   Grid,
   Input
 } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
 
-import React from 'react';
 import { useAuthSignInMutation } from '@/services/auth.services';
 import useAuthStore from '@/store/useAuthStore';
 import { useForm } from 'react-hook-form';
@@ -44,6 +44,8 @@ const SignInWithCredentialsForm = () => {
 
   const error = useAuthStore((state) => state.error);
 
+  const setError = useAuthStore((state) => state.setError);
+
   const { mutate, isLoading } = useAuthSignInMutation();
 
   const onSubmit = handleSubmit((data) => {
@@ -61,6 +63,13 @@ const SignInWithCredentialsForm = () => {
     });
   });
 
+  // Clear errors on un-mounting
+  useEffect(() => {
+    return () => {
+      setError()
+    }
+  }, [setError])
+  
   return (
     <form onSubmit={onSubmit}>
       <Grid gap={2}>
