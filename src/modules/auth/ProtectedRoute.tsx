@@ -32,6 +32,8 @@ const ProtectedRoute = (props: AuthenticatedRouteProps) => {
   useEffect(() => {
     // Try to load signed user on initial load.
     if (!authenticated) loadSignedUser();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -42,6 +44,9 @@ const ProtectedRoute = (props: AuthenticatedRouteProps) => {
     // For authenticated user.
     if (!isLoading && !authenticated && !user && !props.forNonAuthenticatedUserOnly)
       router.push(props.redirect ?? '/signin');
+
+    // We only need to watch this three for any changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, authenticated, props.forNonAuthenticatedUserOnly]);
 
   // Display spinner while checking authentication.
