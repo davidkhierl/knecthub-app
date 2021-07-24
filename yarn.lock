@@ -2789,10 +2789,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.17.5":
-  version: 14.17.5
-  resolution: "@types/node@npm:14.17.5"
-  checksum: bd2c9bd617d36fea3b6380f5f7bbf56b59dbfb97ba5ff6d04fdf8ec47402ba4bb4cc902087a7f40d17c91845cc949c811a366679f3421a965e80fbce328a2750
+"@types/node@npm:^14.17.6":
+  version: 14.17.6
+  resolution: "@types/node@npm:14.17.6"
+  checksum: 4b2464f39d96be4fcdde7f4e8bb3c8b24e98ff908ca0cced997884d0dfbcc666b4b65a51b83dac92650508a1a2466e82eac2f926ddc3c0ae87bfff580dd324f6
   languageName: node
   linkType: hard
 
@@ -2824,13 +2824,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-big-calendar@npm:^0.31.5":
-  version: 0.31.5
-  resolution: "@types/react-big-calendar@npm:0.31.5"
+"@types/react-big-calendar@npm:^0.33.1":
+  version: 0.33.1
+  resolution: "@types/react-big-calendar@npm:0.33.1"
   dependencies:
     "@types/prop-types": "*"
     "@types/react": "*"
-  checksum: 69ec5bd7056eefe224f8a8af45830674e43be89b210ab115926326887009db55121fbf51e4dbe9ffed7d455cf276e43e4b90eef67ce3982c73e502897676bcf8
+  checksum: 5b12cd669499207d6bac200f3fa065a66c3fa04f1fc3d08a4085b3f4c145d28467ddf28d7747db8753766f5078914383f4d152d35170f868230d21612cff51ed
   languageName: node
   linkType: hard
 
@@ -2845,14 +2845,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17.0.14":
-  version: 17.0.14
-  resolution: "@types/react@npm:17.0.14"
+"@types/react@npm:^17.0.15":
+  version: 17.0.15
+  resolution: "@types/react@npm:17.0.15"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 3c5373845b0869d9ce3db16917c87707cdfdb6c08d9ca7ed90a2a097cb3cbec8d037d37e81c3cf5af721d92f8fdc62431405f1874f9a02dea6ec05e5d81e77fe
+  checksum: 427cca327d7a3c46af90e13ca3e1fe5e9c0dc1142df73c9b97c010ea420eb753776a58aec2e783fd669521dc87e89932bd17135fce2b2642aaa475216ac25914
   languageName: node
   linkType: hard
 
@@ -4098,10 +4098,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.22.1":
-  version: 2.22.1
-  resolution: "date-fns@npm:2.22.1"
-  checksum: a89dc6cdf3929b3f0d54d129a3c288df995fc3e6c8099dacc215e5404b4950fc8551d11a58968dfd3b8d576d0c5e637072f615e8f9c3e47d82c81e3952007d5b
+"date-fns@npm:^2.23.0":
+  version: 2.23.0
+  resolution: "date-fns@npm:2.23.0"
+  checksum: 5b23cf7f08a27d0c1633e81304c95ac2bacb1160d86a25d36c40c84853796e442e597a4d75acec3f0920a71f3a65dd55b37565d356fa3fb4c2345225df42d930
   languageName: node
   linkType: hard
 
@@ -5924,12 +5924,12 @@ fsevents@~2.3.1:
     "@hookform/resolvers": ^2.6.1
     "@svgr/webpack": ^5.5.0
     "@types/eslint": ^7.28.0
-    "@types/node": ^14.17.5
+    "@types/node": ^14.17.6
     "@types/nprogress": ^0.2.0
-    "@types/react": ^17.0.14
-    "@types/react-big-calendar": ^0.31.5
+    "@types/react": ^17.0.15
+    "@types/react-big-calendar": ^0.33.1
     axios: ^0.21.1
-    date-fns: ^2.22.1
+    date-fns: ^2.23.0
     eslint: ^7.31.0
     eslint-config-next: ^11.0.1
     eslint-config-prettier: ^8.3.0
@@ -5942,10 +5942,10 @@ fsevents@~2.3.1:
     react: ^17.0.2
     react-big-calendar: ^0.33.5
     react-dom: ^17.0.2
-    react-hook-form: ^7.11.1
+    react-hook-form: ^7.12.0
     react-icons: ^4.2.0
     react-query: ^3.19.0
-    sass: ^1.35.2
+    sass: ^1.36.0
     typescript: 4.3.5
     yup: ^0.32.9
     zustand: ^3.5.7
@@ -7307,12 +7307,12 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.11.1":
-  version: 7.11.1
-  resolution: "react-hook-form@npm:7.11.1"
+"react-hook-form@npm:^7.12.0":
+  version: 7.12.0
+  resolution: "react-hook-form@npm:7.12.0"
   peerDependencies:
     react: ^16.8.0 || ^17
-  checksum: 586ac414830a64bdb3dade5d8e9e44841cf186620d8605087f345b7e4887908a3971aabef2259c3af0457c7fc4e91c95970a890c64f76078ebc884c59acd79a4
+  checksum: 74cc6ec441b74cfa695b5660793d7bf1af55061eda57f712b573dda12d3cfc71631d9a962c8ce41aaebc58bb9d39f4378674be16ecc23777d4c5198571d2a69a
   languageName: node
   linkType: hard
 
@@ -7715,14 +7715,14 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.35.2":
-  version: 1.35.2
-  resolution: "sass@npm:1.35.2"
+"sass@npm:^1.36.0":
+  version: 1.36.0
+  resolution: "sass@npm:1.36.0"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
   bin:
     sass: sass.js
-  checksum: d102e3fd6e6aa1a61f9c765fb31ff701d78ef05cf256ebb9ed80994c86638dcc8cc71832df1a1f71edce427cf823449c2fc43618b29ad51a8ca5bf93349ccaf4
+  checksum: e72aa7d49d7a65f37253b5b762925e260c7aaed06f404876fd11e5b2ac0a8d13995f7fae6e02f8098f53d3046150f8aaf3faaaf248216e313622252cbc4b46b7
   languageName: node
   linkType: hard
 
