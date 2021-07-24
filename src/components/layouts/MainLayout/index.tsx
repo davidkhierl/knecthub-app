@@ -9,9 +9,9 @@ export interface MainLayoutProps {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <Box id='main-layout' height='100vh' overflow='hidden' position='relative'>
+    <Box id='main-layout' height='100vh' overflowY='hidden' overflowX='auto' position='relative'>
       <Flex height='full'>
-        <Sidebar maxW='280px' />
+        <Sidebar maxW='280px' flexShrink={0}/>
         <Box as='main' flex={1} p={4}>
           <Box
             bg={useColorModeValue('white', 'gray.700')}

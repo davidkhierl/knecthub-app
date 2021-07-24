@@ -11,15 +11,17 @@ export interface SidebarMenuItemProps extends ButtonProps {
 const SidebarMenuItem = forwardRef<SidebarMenuItemProps, 'button'>(({ href, ...props }, ref) => {
   const router = useRouter();
 
+  const isActive = router.pathname === href
+
   if (href)
     return (
       <Link href={href} passHref>
         <Button
           as='a'
-          colorScheme='cyan'
+          colorScheme='blue'
           fontSize='sm'
-          fontWeight='normal'
-          isActive={router.pathname === href}
+          fontWeight={isActive ? 'medium' : 'normal'}
+          isActive={isActive}
           isFullWidth
           justifyContent='start'
           ref={ref}
@@ -31,7 +33,7 @@ const SidebarMenuItem = forwardRef<SidebarMenuItemProps, 'button'>(({ href, ...p
 
   return (
     <Button
-      colorScheme='cyan'
+      colorScheme='blue'
       fontSize='sm'
       fontWeight='normal'
       isFullWidth

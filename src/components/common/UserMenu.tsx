@@ -36,7 +36,7 @@ const UserMenu = forwardRef<MenuButtonProps, 'button'>((props, ref) => {
         py={2}
         textAlign='left'
         rightIcon={<HiOutlineSelector />}
-        colorScheme='cyan'
+        colorScheme='blue'
         variant='sidebar-menu-item'
         ref={ref}
         {...props}>

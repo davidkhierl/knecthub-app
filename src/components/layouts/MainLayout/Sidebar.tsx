@@ -7,16 +7,9 @@ import {
   BoxProps,
   Button,
   Flex,
-  forwardRef,
+  forwardRef
 } from '@chakra-ui/react';
-import {
-  HiCalendar,
-  HiHome,
-  HiPlus,
-  HiSearch,
-  HiStar,
-  HiUserGroup
-} from 'react-icons/hi';
+import { HiCalendar, HiHome, HiPlus, HiSearch, HiStar, HiUserGroup } from 'react-icons/hi';
 
 import KnecthubLogo from '@/components/common/KnecthubLogo';
 import Menu from './SidebarMenu';
@@ -67,9 +60,7 @@ const Sidebar = forwardRef<BoxProps, 'div'>((props, ref) => {
             </Box>
           </Alert>
         )}
-        <Menu>
-          <UserMenu />
-        </Menu>
+        <UserMenu />
       </Flex>
     </Box>
   );
