@@ -66,10 +66,10 @@ const SignInWithCredentialsForm = () => {
   // Clear errors on un-mounting
   useEffect(() => {
     return () => {
-      setError()
-    }
-  }, [setError])
-  
+      setError();
+    };
+  }, [setError]);
+
   return (
     <form onSubmit={onSubmit}>
       <Grid gap={2}>
