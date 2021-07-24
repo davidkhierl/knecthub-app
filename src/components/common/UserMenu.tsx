@@ -17,6 +17,7 @@ import { BiCog } from 'react-icons/bi';
 import { HiOutlineSelector } from 'react-icons/hi';
 import { ImSun } from 'react-icons/im';
 import { IoMoon } from 'react-icons/io5';
+import Link from 'next/link';
 import React from 'react';
 import useAuthStore from '@/store/useAuthStore';
 
@@ -60,9 +61,9 @@ const UserMenu = forwardRef<MenuButtonProps, 'button'>((props, ref) => {
           onClick={toggleColorMode}>
           Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
         </MenuItem>
-        <MenuItem href='/settings' icon={<BiCog size={18} />}>
-          Settings
-        </MenuItem>
+        <Link href='/settings' passHref>
+          <MenuItem icon={<BiCog size={18} />}>Settings</MenuItem>
+        </Link>
         <MenuItem icon={<HiOutlineSupport size={18} />}>Help &amp; Support</MenuItem>
         <MenuItem icon={<HiLogout size={18} />} onClick={signOut}>
           Sign out
